@@ -4,8 +4,8 @@
 # generated files
 bin/
 gen/
-*/bin
-*/gen
+**/bin/*
+**/gen/*
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -17,4 +17,3 @@ local.properties
 .idea/
 *.iml
 .DS_Store
-
