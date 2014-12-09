@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical" >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_gravity="center" 
+        android:orientation="horizontal">
+        
+        <ImageButton
+            android:id="@+id/clear_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/clear_drawing"
+            android:src="@drawable/clear"
+            android:onClick="clearImage"/>
+ 
+        <ImageButton
+            android:id="@+id/brush_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/brush_size"
+            android:src="@drawable/brush"
+            android:onClick="changeBrushSize"/>
+          
+        <ImageButton
+            android:id="@+id/erase_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/erase"
+            android:src="@drawable/erase"/>
+            
+  
+        <ImageButton
+           	android:id="@+id/color_button"
+           	android:layout_width="wrap_content"
+           	android:layout_height="fill_parent"
+           	android:contentDescription="@string/color"
+           	android:src="@drawable/color"
+           	android:onClick="changeColor"/>
+        </LinearLayout>
+
+    	<com.example.telephone_pictionary.DrawingTools
+   	 		android:id="@+id/drawing"
+    		android:layout_width="fill_parent"
+    		android:layout_height="0dp"
+    		android:layout_marginBottom="3dp"
+    		android:layout_marginLeft="5dp"
+   		 	android:layout_marginRight="5dp"
+    		android:layout_marginTop="3dp"
+    		android:layout_weight="1"
+    		android:background="#FFFFFFFF" />
+    	
+    	<LinearLayout 
+    	    android:layout_width = "wrap_content"
+    	   	android:layout_height = "30dp"
+    	   	android:layout_gravity="center"
+    		android:orientation="horizontal">
+    	   
+    		 <ImageButton
+        	    android:id="@+id/save_button"
+            	android:layout_width="wrap_content"
+            	android:layout_height="fill_parent"
+           		android:contentDescription="@string/save"
+           		android:src="@drawable/save"
+           		android:onClick="saveToDevice"/>
+              
+       	 	<ImageButton
+           		android:id="@+id/send_button"
+           		android:layout_width="wrap_content"
+           		android:layout_height="fill_parent"
+           		android:contentDescription="@string/send"
+           		android:src="@drawable/send"/>
+    	</LinearLayout>
+</LinearLayout>

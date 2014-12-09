@@ -40,4 +40,14 @@
         android:scaleType="centerInside"
         android:src="@drawable/telephonetitle" />
        
+     <Button
+        android:id="@+id/drawingcanvastemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/explanationbutton"
+        android:layout_marginTop="28dp"
+        android:text="Draw Canvas Temp" 
+        android:onClick="drawCanvasTemp"/>
+     
 </RelativeLayout>

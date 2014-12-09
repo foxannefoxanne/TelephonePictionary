@@ -55,5 +55,14 @@ public class MainActivity extends Activity
 		startActivity(intent2);
 	} 
 	
+	//leads to new game page
+	public void drawCanvasTemp(View view){
+		Intent intent3 = new Intent(this, CanvasDrawer.class);
+		startActivity(intent3);
+	}
 	
+	
+
+
+
 }

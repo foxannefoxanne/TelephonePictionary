@@ -4,4 +4,16 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <!-- Brush Sizes -->
+    <dimen name = "xs_brush">5dp</dimen>
+	<integer name="xsmall">5</integer>
+	<dimen name = "s_brush">10dp</dimen>
+	<integer name="small">10</integer>
+	<dimen name="m_brush">20dp</dimen>
+	<integer name="med">20</integer>
+	<dimen name="l_brush">30dp</dimen>
+	<integer name="large">30</integer>
+	<dimen name="xl_brush">50dp</dimen>
+	<integer name="xlarge">50</integer>
+
 </resources>
