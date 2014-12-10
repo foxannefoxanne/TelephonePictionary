@@ -19,14 +19,15 @@
         android:scaleType="centerInside"
         android:src="@drawable/telephonetitle" />
     
-    <!-- ImageButton 
+    <ImageButton 
         android:id="@+id/hostGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:onClick="newGame"/> -->
+        android:src="@drawable/hostgame"
+        android:onClick="newGame"/> 
         
     
     <ImageButton
@@ -40,7 +41,7 @@
         android:onClick="joinGame"/>
         
 	
-	<!--  ImageButton
+	<ImageButton
         android:id="@+id/passAndPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +49,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/passandplay"
-        android:onClick="newGame"/> -->
+        android:onClick="passAndPlay"/> 
 
     <ImageButton
         android:id="@+id/explanationbutton"

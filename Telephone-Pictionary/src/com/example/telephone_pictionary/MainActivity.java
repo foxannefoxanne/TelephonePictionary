@@ -1,12 +1,15 @@
 package com.example.telephone_pictionary;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View; 
+import android.widget.EditText;
 
 
 public class MainActivity extends Activity 
@@ -69,6 +72,30 @@ public class MainActivity extends Activity
 	{
 //		Intent intent = new Intent(this, PassPlay.class);
 //		startActivity(intent);
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setTitle("Pass and Play");
+		alertDialogBuilder.setMessage(R.string.numPlayers);
+		LayoutInflater inflater = this.getLayoutInflater(); 
+		
+		final EditText pnp  = new EditText(this);
+		alertDialogBuilder.setView(pnp);
+		
+		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dinterface, int id){
+			//	EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
+
+				String guessString = pnp.getText().toString();
+				//Start Canvas Writer
+				dinterface.dismiss(); 
+			}
+		});
+		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dinterface, int id){
+				dinterface.cancel();
+
+			}
+		});
+		alertDialogBuilder.create().show();
 	}
 	
 	public void drawCanvasTemp(View view){
