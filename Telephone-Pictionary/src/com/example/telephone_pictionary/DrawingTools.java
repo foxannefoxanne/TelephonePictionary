@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.view.MotionEvent;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
@@ -23,6 +24,7 @@ public class DrawingTools extends View {
 	private Canvas drawingCanvas;
 	private Bitmap drawingBitmap; 
 	private float brushSize, lastBrushSize;
+	private boolean erase = false; 
 	
 	public DrawingTools(Context context, AttributeSet attrs){
 		super(context, attrs);
@@ -92,7 +94,7 @@ public class DrawingTools extends View {
 	}
 	
 	public void startNew(){
-	//	drawingCanvas.drawColor(0, PorterDuff.Mode.Clear);
+		drawingCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
 		invalidate(); 
 	
 
@@ -117,4 +119,15 @@ public class DrawingTools extends View {
 	public float getLastBrushSize(){
 		return lastBrushSize; 
 	}
+	
+	public void setErase(boolean isErase){
+		erase = isErase; 
+		
+		if(erase){
+				drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+		}
+		else
+			 drawPaint.setXfermode(null);
+	}
+	
 }
