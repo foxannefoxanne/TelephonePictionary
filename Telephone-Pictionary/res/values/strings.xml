@@ -7,24 +7,21 @@
     <string name="normal_instr"></string>
     <string name="pass_play">Pass And Play Version</string>
     <string name="pass_play_instr">Start the new game using the Start Game button. Select how many players. The first player will type a phrase on a Card then select the Pass button. The player will then pass the device onto the next player. This player will then draw a picture depicting the phrase and pass it on. Play will continue alternating between the player typing a phrase from the picture and the player drawing a picture from a phrase until all the device has traveled to all players.</string>
-
     <string name="title_activity_explanation">Explanation</string>
-	<string name="title_activity_connect">Connections</string>
-	<string name="title_activity_canvas_drawer">Canvas-Drawer</string>
-    
+    <string name="title_activity_connect">Connections</string>
+    <string name="title_activity_canvas_drawer">Canvas-Drawer</string>
     <string name="send">Send</string>
     <string name="save">Save</string>
+    <string name="back">Back</string>
     <string name="clear_drawing">Clear</string>
-    
     <string name="brush_size">Brush</string>
     <string name="color">Color</string>
     <string name="erase">Erase</string>
-    
     <string name="small">Small</string>
-	<string name="med">Medium</string>
-	<string name="large">Large</string>
+    <string name="med">Medium</string>
+    <string name="large">Large</string>
     <string name="xsml">ExtraSmall</string>
-	<string name="xl">ExtraLarge</string>
+    <string name="xl">ExtraLarge</string>
+    <string name="title_activity_canvas_writer">CanvasWriter</string>
 
-	
 </resources>

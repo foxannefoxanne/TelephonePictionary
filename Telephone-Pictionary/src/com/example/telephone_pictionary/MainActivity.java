@@ -67,12 +67,17 @@ public class MainActivity extends Activity
 	//This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
 	{
-		Intent intent = new Intent(this, PassPlay.class);
-		startActivity(intent);
+//		Intent intent = new Intent(this, PassPlay.class);
+//		startActivity(intent);
 	}
 	
 	public void drawCanvasTemp(View view){
 		Intent intent3 = new Intent(this, CanvasDrawer.class);
+		startActivity(intent3);
+	}
+	
+	public void writeCanvasTemp(View view){
+		Intent intent3 = new Intent(this, CanvasWriter.class);
 		startActivity(intent3);
 	}
 	
