@@ -49,7 +49,8 @@ public class MainActivity extends Activity
 	}
 	
 	//leads to new game page
-	// When Host Game button is pressed
+	// When Host Game button is pressed, but Pass And Play is
+	// going to lead here for now
 	public void newGame(View view)
 	{
 		//this is crashing. i will have to check this out later. 
@@ -60,12 +61,14 @@ public class MainActivity extends Activity
 	//This is what happens when Join Game button is pushed.
 	public void joinGame(View view)
 	{
+		//Intent intent = new Intent(this, JoinGame.class)
 		
 	}	
 	//This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
 	{
-		
+		Intent intent = new Intent(this, PassPlay.class);
+		startActivity(intent);
 	}
 	
 	public void drawCanvasTemp(View view){

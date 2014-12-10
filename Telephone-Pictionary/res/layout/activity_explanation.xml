@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Description"
         android:layout_below="@+id/Description"
-        android:text="Pass And Play Version"
+        android:text="@string/pass_play"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -43,7 +43,7 @@
         android:scrollbars="vertical"
         android:layout_alignLeft="@+id/HowToUse"
         android:layout_below="@+id/HowToUse"
-        android:text="Start the new game using the Start Game button. Select how many players. The first player will type a phrase on a Card then select the Pass button. The player will then pass the device onto the next player. This player will then draw a picture depicting the phrase and pass it on. Play will continue alternating between the player typing a phrase from the picture and the player drawing a picture from a phrase until all the device has traveled to all players."
+        android:text="@string/pass_play_instr"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>
