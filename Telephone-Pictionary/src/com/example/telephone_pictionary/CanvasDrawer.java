@@ -161,7 +161,7 @@ public class CanvasDrawer extends Activity{
 	
 
 //	public void paintClicked(View view){
-//		ImageButton imgView = (ImageButton)view;
+//	ImageButton imgView = (ImageButton)view;
 	//	String color = view.getTag().toString();
 	//	drawTool.setColor(color);
 	//}

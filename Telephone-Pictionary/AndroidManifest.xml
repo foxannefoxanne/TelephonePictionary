@@ -34,7 +34,10 @@
             android:name=".CanvasDrawer"
             android:label="@string/title_activity_canvas_drawer" >
         </activity>
-       
+        <activity
+            android:name=".CanvasWriter"
+            android:label="@string/title_activity_canvas_writer" >
+        </activity>
     </application>
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

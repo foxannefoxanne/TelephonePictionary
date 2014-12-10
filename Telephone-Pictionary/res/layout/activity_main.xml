@@ -70,5 +70,14 @@
         android:layout_marginTop="28dp"
         android:text="Draw Canvas Temp" 
         android:onClick="drawCanvasTemp"/>
+
+     <Button
+         android:id="@+id/writingTemp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_above="@+id/explanationbutton"
+         android:layout_toLeftOf="@+id/drawingcanvastemp"
+         android:text="Write Canvas Temp"
+         android:onClick="writeCanvasTemp" />
      
 </RelativeLayout>

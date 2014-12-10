@@ -76,6 +76,11 @@ public class MainActivity extends Activity
 		startActivity(intent3);
 	}
 	
+	public void writeCanvasTemp(View view){
+		Intent intent3 = new Intent(this, CanvasWriter.class);
+		startActivity(intent3);
+	}
+	
 	
 
 
