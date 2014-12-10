@@ -48,6 +48,8 @@ public class MainActivity extends Activity
 	    startActivity(intent);
 	}
 	
+	//leads to new game page
+	// When Host Game button is pressed
 	public void newGame(View view)
 	{
 		//this is crashing. i will have to check this out later. 
@@ -55,7 +57,17 @@ public class MainActivity extends Activity
 		startActivity(intent2);
 	} 
 	
-	//leads to new game page
+	//This is what happens when Join Game button is pushed.
+	public void joinGame(View view)
+	{
+		
+	}	
+	//This is what happens when Pass and Play button is pushed.
+	public void passAndPlay(View view)
+	{
+		
+	}
+	
 	public void drawCanvasTemp(View view){
 		Intent intent3 = new Intent(this, CanvasDrawer.class);
 		startActivity(intent3);

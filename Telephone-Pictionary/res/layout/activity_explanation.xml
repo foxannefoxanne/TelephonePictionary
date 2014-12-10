@@ -7,6 +7,15 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.telephonepictionary.Explanation" >
+    
+    <TextView
+        android:id="@+id/TelephonePic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Description"
+        android:layout_alignParentTop="true"
+        android:text="About the Game the regular version"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/Description"
@@ -15,17 +24,8 @@
         android:scrollbars="vertical"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TelephonePic"
-        android:text="Telephone pictionary is. There should be a better way to display this. A cuter way for text. Lets implement a scroll bar. Lets remove the action bar. Do we like the grey? We can relayout later. "
+        android:text="The normal version can be explained here."
         android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/TelephonePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Description"
-        android:layout_alignParentTop="true"
-        android:text="About the Game"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/HowToUse"
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Description"
         android:layout_below="@+id/Description"
-        android:text="How To Use This App"
+        android:text="Pass And Play Version"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
