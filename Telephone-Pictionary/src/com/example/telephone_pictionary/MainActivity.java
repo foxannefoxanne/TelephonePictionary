@@ -1,5 +1,6 @@
 package com.example.telephone_pictionary;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Activity;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View; 
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity 
@@ -77,16 +79,24 @@ public class MainActivity extends Activity
 		alertDialogBuilder.setMessage(R.string.numPlayers);
 		LayoutInflater inflater = this.getLayoutInflater(); 
 		
-		final EditText pnp  = new EditText(this);
-		alertDialogBuilder.setView(pnp);
+		final EditText input  = new EditText(this);
+		alertDialogBuilder.setView(input);
 		
 		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
 			public void onClick(DialogInterface dinterface, int id){
-			//	EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
 
-				String guessString = pnp.getText().toString();
+				int numOfPlayers = Integer.parseInt(input.getText().toString());
+				dinterface.dismiss(); // This might need to be after starting canvas writer
 				//Start Canvas Writer
-				dinterface.dismiss(); 
+				Intent intent = new Intent();
+				intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CanvasWriter"); 
+				//intent.setExtra(); need to put the number of players in there somewhere
+				startActivity(intent);	
+				
+				Context context = getApplicationContext();
+				CharSequence loadingMessage = "Pass and Play mode is loading...";
+				int duration = Toast.LENGTH_SHORT;
+				Toast.makeText(context, loadingMessage, duration).show();
 			}
 		});
 		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){

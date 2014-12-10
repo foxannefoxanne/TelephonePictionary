@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Description"
+        android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
         android:text="About the Game the regular version"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -21,7 +22,6 @@
         android:id="@+id/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/TelephonePic"
         android:text="The normal version can be explained here."
@@ -40,7 +40,6 @@
         android:id="@+id/Instructions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="vertical"
         android:layout_alignLeft="@+id/HowToUse"
         android:layout_below="@+id/HowToUse"
         android:text="@string/pass_play_instr"
