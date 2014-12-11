@@ -3,6 +3,7 @@ package com.example.telephone_pictionary;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.UUID;
 import android.provider.MediaStore;
 import android.app.AlertDialog;
@@ -21,6 +24,8 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 
 public class CanvasDrawer extends Activity{
 
@@ -88,8 +93,6 @@ public class CanvasDrawer extends Activity{
 		colorChooser.setTitle("Color:");
 	    colorChooser.setContentView(R.layout.color_picker); 
 	    
-	    
-	    
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
 	    ImageButton color2 = (ImageButton)colorChooser.findViewById(R.id.color2);
 	    ImageButton color3 = (ImageButton)colorChooser.findViewById(R.id.color3);
@@ -114,6 +117,7 @@ public class CanvasDrawer extends Activity{
 
 	    OnClickListener listener = new OnClickListener(){
 		public void onClick(View v){	
+			drawTool.setErase(false); 
 			String color = v.getTag().toString();
 			drawTool.setColor(color);
 			colorChooser.dismiss(); 
@@ -200,34 +204,31 @@ public class CanvasDrawer extends Activity{
 	}	
 	
 
-//	public void paintClicked(View view){
-//	ImageButton imgView = (ImageButton)view;
-	//	String color = view.getTag().toString();
-	//	drawTool.setColor(color);
-	//}
-	
-	
+
+	//NEEDS HELP. 
 	//function to save images
 	public void savetoDevice(View view) {
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image:");
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			 public void onClick(DialogInterface dialog, int which){
-			
-				String savedImage = MediaStore.Images.Media.insertImage(
-						 getContentResolver(), drawTool.getDrawingCache(),
-						 UUID.randomUUID().toString() + ".png", "drawing");
-				 
-				 if(savedImage!=null){
-					 	Toast successToast = Toast.makeText(getApplicationContext(),
-					 		"Image saved.", Toast.LENGTH_SHORT);
-					 		successToast.show();
-					 	}
-					 	else{
-					 		Toast failedToast = Toast.makeText(getApplicationContext(),
-					 		"Save unsuccessful.", Toast.LENGTH_SHORT);
-		 					failedToast.show(); 
-					 	}
+				 drawTool.setDrawingCacheEnabled(true);
+				 Bitmap bitmap = drawTool.getDrawingCache();
+				 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+				 File file = new File(path+"/image.png");
+				 FileOutputStream ostream;
+				 try {
+					    file.createNewFile();
+					    ostream = new FileOutputStream(file);
+					    bitmap.compress(CompressFormat.PNG, 100, ostream);
+					    ostream.flush();
+					    ostream.close();
+					    Toast.makeText(getApplicationContext(), "image saved", 5000).show();
+					} catch (Exception e) {
+					    e.printStackTrace();
+					    Toast.makeText(getApplicationContext(), "error", 5000).show();
+					}
+
 				 drawTool.destroyDrawingCache();
 			 }
 		 });
@@ -236,6 +237,8 @@ public class CanvasDrawer extends Activity{
 				 dialog.cancel();
 			 }
 		 });
+		saveDialog.show(); 
+
 	}
 
 	//clear image
@@ -253,6 +256,8 @@ public class CanvasDrawer extends Activity{
 				dialog.cancel();
 			}
 		}); 
+		
+		resetDialog.show(); 
 	}
 		
 	public void eraseImage(View view){
@@ -265,10 +270,6 @@ public class CanvasDrawer extends Activity{
 	
 	}
 	
-	
-	public void returnToCardView(View view) {
-		
-	}
-	
+
 	
 }

@@ -20,7 +20,7 @@ public class DrawingTools extends View {
 	
 	private Path drawPath;
 	private Paint drawPaint, canvasPaint;
-	private int paintColor = 0x000000, lastColor;
+	private int paintColor = 0xFFFFFF, lastColor;
 	private Canvas drawingCanvas;
 	private Bitmap drawingBitmap; 
 	private float brushSize, lastBrushSize;
@@ -124,7 +124,8 @@ public class DrawingTools extends View {
 		erase = isErase; 
 		
 		if(erase){
-				drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+				//drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+				this.setColor("#FFFFFFFF");
 		}
 		else
 			 drawPaint.setXfermode(null);

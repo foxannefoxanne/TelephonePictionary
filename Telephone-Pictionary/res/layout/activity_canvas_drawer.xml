@@ -76,7 +76,7 @@
             	android:layout_height="fill_parent"
            		android:contentDescription="@string/save"
            		android:src="@drawable/save"
-           		android:onClick="saveToDevice"/>
+           		android:onClick="savetoDevice"/>
               
        	 	<ImageButton
            		android:id="@+id/send_button"
