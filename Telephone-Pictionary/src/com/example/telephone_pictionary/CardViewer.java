@@ -1,10 +1,12 @@
 package com.example.telephone_pictionary;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 public class CardViewer extends ActionBarActivity {
@@ -32,6 +34,19 @@ public class CardViewer extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void toCanvas(View view) {
+		// take viewer to appropriate canvas
+		Model model = Model.getInstance();
+		if (model.getLastCard().m_type == Card.Type.TEXT) {
+			Intent intent = new Intent(this, CanvasDrawer.class);
+			startActivity(intent);
+		}
+		else {
+			Intent intent = new Intent(this, CanvasWriter.class);
+			startActivity(intent);
+		}
 	}
 	
 	public void viewPreviousCard(Bitmap bap)

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -49,25 +50,25 @@ public class CanvasWriter extends Activity {
 	{
 		
 		TextView textView = new TextView(this); 
-	AlertDialog.Builder  textInput = new AlertDialog.Builder(this);
+		AlertDialog.Builder  textInput = new AlertDialog.Builder(this);
 		textInput.setTitle("Guess:");
 		LayoutInflater inflater = this.getLayoutInflater(); 
 		
-		//final View textRetriever = inflater.inflate(R.layout.text_input, null);
+		// final View textRetriever = inflater.inflate(R.layout.text_input, null);
 		final EditText guess  = new EditText(this);
 		textInput.setView(guess);
-		//final EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
+		// final EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
 
-		textInput.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dinterface, int id){
-			//	EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
+		textInput.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dinterface, int id) {
+				// EditText guess  = (EditText)textRetriever.findViewById(R.id.textEntry);
 				String guessString = guess.getText().toString();
 				writeTool.createText(guessString); 
 				dinterface.dismiss(); 
 			}
 		});
-		textInput.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dinterface, int id){
+		textInput.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dinterface, int id) {
 				dinterface.cancel();
 
 			}
@@ -75,7 +76,7 @@ public class CanvasWriter extends Activity {
 		textInput.create().show();				
 	}
 	
-	public void submitImage(View view){
+	public void submitImage(View view) {
 		
 		writeTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = writeTool.getDrawingCache();
@@ -83,8 +84,18 @@ public class CanvasWriter extends Activity {
    	  
    	    Card cardStorage = new Card(bitmap,Card.Type.TEXT); 
 
-	    model.saveCard(cardStorage); 
-
+	    if (model.saveCard(cardStorage)) {
+	    	// end game
+	    	Intent intent = new Intent();
+	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
+	    	startActivity(intent);
+	    }
+	    else {
+	    	// go to card viewer
+   	    	Intent intent = new Intent();
+			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
+			startActivity(intent);	
+	    }
 
 	}
 }

@@ -53,9 +53,6 @@ public class MainActivity extends Activity
 	    startActivity(intent);
 	}
 	
-	//leads to new game page
-	// When Host Game button is pressed, but Pass And Play is
-	// going to lead here for now
 	public void newGame(View view)
 	{
 		//this is crashing. i will have to check this out later. 
@@ -98,7 +95,7 @@ public class MainActivity extends Activity
 				startActivity(intent);	
 				
 				Context context = getApplicationContext();
-				CharSequence loadingMessage = "Game starting";
+				CharSequence loadingMessage = "Enter your first word or phrase";
 				int duration = Toast.LENGTH_SHORT;
 				Toast.makeText(context, loadingMessage, duration).show();
 			}
@@ -122,8 +119,4 @@ public class MainActivity extends Activity
 		startActivity(intent3);
 	}
 	
-	
-
-
-
 }

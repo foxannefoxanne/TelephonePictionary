@@ -88,7 +88,7 @@ public class CanvasDrawer extends Activity{
 
 	
 	
-	public void changeColor(View view){
+	public void changeColor(View view) {
 		final Dialog colorChooser = new Dialog(this);
 		colorChooser.setTitle("Color:");
 	    colorChooser.setContentView(R.layout.color_picker); 
@@ -115,8 +115,8 @@ public class CanvasDrawer extends Activity{
 	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
 	
 
-	    OnClickListener listener = new OnClickListener(){
-		public void onClick(View v){	
+	    OnClickListener listener = new OnClickListener() {
+		public void onClick(View v) {	
 			drawTool.setErase(false); 
 			String color = v.getTag().toString();
 			drawTool.setColor(color);
@@ -146,16 +146,16 @@ public class CanvasDrawer extends Activity{
 		color20.setOnClickListener(listener);
 	}
 	
-	public void changeBrushSize(View view){
+	public void changeBrushSize(View view) {
 	    final Dialog brushChooser = new Dialog(this); 
 		brushChooser.setTitle("Brush size:");
 		brushChooser.setContentView(R.layout.brush_picker);
 		drawTool.setErase(false); 
 
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
-		xsButton.setOnClickListener(new OnClickListener(){
+		xsButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick (View v){
+			public void onClick (View v) {
 				drawTool.setBrushSize(xsBrush);
 				drawTool.setLastBrushSize(xsBrush); 
 				brushChooser.dismiss();
@@ -163,16 +163,16 @@ public class CanvasDrawer extends Activity{
 
 		
 		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
-			sButton.setOnClickListener(new OnClickListener(){
+			sButton.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick (View v){
+			public void onClick (View v) {
 				drawTool.setBrushSize(sBrush);
 				drawTool.setLastBrushSize(sBrush); 
 				brushChooser.dismiss();
 			} }); 
 		
 		ImageButton mButton = (ImageButton)brushChooser.findViewById(R.id.m_brush);
-		mButton.setOnClickListener(new OnClickListener(){
+		mButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick (View v){
 				drawTool.setBrushSize(mBrush);
@@ -182,7 +182,7 @@ public class CanvasDrawer extends Activity{
 		
 		
 		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
-		lButton.setOnClickListener(new OnClickListener(){
+		lButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick (View v){
 				drawTool.setBrushSize(lBrush);
@@ -191,7 +191,7 @@ public class CanvasDrawer extends Activity{
 			}}); 
 		
 		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
-		xlButton.setOnClickListener(new OnClickListener(){
+		xlButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick (View v){
 				drawTool.setBrushSize(xlBrush);
@@ -211,29 +211,29 @@ public class CanvasDrawer extends Activity{
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image:");
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
-			 public void onClick(DialogInterface dialog, int which){
+			 public void onClick(DialogInterface dialog, int which) {
 				 drawTool.setDrawingCacheEnabled(true);
 				 Bitmap bitmap = drawTool.getDrawingCache();
 				 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 				 File file = new File(path+"/image.png");
 				 FileOutputStream ostream;
 				 try {
-					    file.createNewFile();
-					    ostream = new FileOutputStream(file);
-					    bitmap.compress(CompressFormat.PNG, 100, ostream);
-					    ostream.flush();
-					    ostream.close();
-					    Toast.makeText(getApplicationContext(), "image saved", 5000).show();
-					} catch (Exception e) {
-					    e.printStackTrace();
-					    Toast.makeText(getApplicationContext(), "error", 5000).show();
-					}
+					 file.createNewFile();
+					 ostream = new FileOutputStream(file);
+					 bitmap.compress(CompressFormat.PNG, 100, ostream);
+					 ostream.flush();
+					 ostream.close();
+					 Toast.makeText(getApplicationContext(), "image saved", 5000).show();
+				} catch (Exception e) {
+					e.printStackTrace();
+					Toast.makeText(getApplicationContext(), "error", 5000).show();
+				}
 
 				 drawTool.destroyDrawingCache();
 			 }
 		 });
-		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener(){
-			 public void onClick(DialogInterface dialog, int which){
+		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			 public void onClick(DialogInterface dialog, int which) {
 				 dialog.cancel();
 			 }
 		 });
@@ -241,7 +241,7 @@ public class CanvasDrawer extends Activity{
 
 	}
 
-	//clear image
+	// clear image
 	public void clearImage(View view) {
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
 		resetDialog.setTitle("Clear Image:");
@@ -260,12 +260,12 @@ public class CanvasDrawer extends Activity{
 		resetDialog.show(); 
 	}
 		
-	public void eraseImage(View view){
+	public void eraseImage(View view) {
 		drawTool.setErase(true);
 		
 	}
 	//will eventually submit image to queue
-	public void submitImage(View view){
+	public void submitImage(View view) {
 		
 		drawTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = drawTool.getDrawingCache();
@@ -274,7 +274,16 @@ public class CanvasDrawer extends Activity{
 
    	    Card cardStorage = new Card(bitmap,Card.Type.IMAGE); 
 
-   	    model.saveCard(cardStorage); 
+   	    if (model.saveCard(cardStorage)) {
+	    	Intent intent = new Intent();
+	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
+	    	startActivity(intent);
+   	    }
+   	    else {
+   	    	Intent intent = new Intent();
+			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
+			startActivity(intent);	
+   	    }
 
 	}
 	
