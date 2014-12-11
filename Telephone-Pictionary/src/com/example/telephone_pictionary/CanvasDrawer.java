@@ -3,6 +3,7 @@ package com.example.telephone_pictionary;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -85,21 +86,60 @@ public class CanvasDrawer extends Activity{
 	public void changeColor(View view){
 		final Dialog colorChooser = new Dialog(this);
 		colorChooser.setTitle("Color:");
-		colorChooser.setContentView(R.layout.color_picker);		
+	    colorChooser.setContentView(R.layout.color_picker); 
+	    
+	    
+	    
+	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
+	    ImageButton color2 = (ImageButton)colorChooser.findViewById(R.id.color2);
+	    ImageButton color3 = (ImageButton)colorChooser.findViewById(R.id.color3);
+	    ImageButton color4 = (ImageButton)colorChooser.findViewById(R.id.color4);
+	    ImageButton color5 = (ImageButton)colorChooser.findViewById(R.id.color5);
+	    ImageButton color6 = (ImageButton)colorChooser.findViewById(R.id.color6);
+	    ImageButton color7 = (ImageButton)colorChooser.findViewById(R.id.color7);
+	    ImageButton color8 = (ImageButton)colorChooser.findViewById(R.id.color8);
+	    ImageButton color9 = (ImageButton)colorChooser.findViewById(R.id.color9);
+	    ImageButton color10 = (ImageButton)colorChooser.findViewById(R.id.color10);
+	    ImageButton color11 = (ImageButton)colorChooser.findViewById(R.id.color11);
+	    ImageButton color12 = (ImageButton)colorChooser.findViewById(R.id.color12);
+	    ImageButton color13 = (ImageButton)colorChooser.findViewById(R.id.color13);
+	    ImageButton color14 = (ImageButton)colorChooser.findViewById(R.id.color14);
+	    ImageButton color15 = (ImageButton)colorChooser.findViewById(R.id.color15);
+	    ImageButton color16 = (ImageButton)colorChooser.findViewById(R.id.color16);
+	    ImageButton color17  = (ImageButton)colorChooser.findViewById(R.id.color17);
+	    ImageButton color18 = (ImageButton)colorChooser.findViewById(R.id.color18);
+	    ImageButton color19 = (ImageButton)colorChooser.findViewById(R.id.color19);
+	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
+	
 
-		LinearLayout paintDialog = (LinearLayout)colorChooser.findViewById(R.id.paint_colors);
-		//paintDialog.setOnClickListener(new OnClickListener(){
-		//	public void onClick(View v){
-		//		if(v != currPaint){
-		//			ImageButton imgView = (ImageButton)v;
-		//			String color = v.getTag().toString();
-		//			drawTool.setColor(color);
-		//		}
-		//	}
-		//	
-		//});
+	    OnClickListener listener = new OnClickListener(){
+		public void onClick(View v){	
+			String color = v.getTag().toString();
+			drawTool.setColor(color);
+			colorChooser.dismiss(); 
+		}};
 		colorChooser.show();
 
+		color1.setOnClickListener(listener);
+		color2.setOnClickListener(listener);
+		color3.setOnClickListener(listener);
+		color4.setOnClickListener(listener);
+		color5.setOnClickListener(listener);
+		color6.setOnClickListener(listener);
+		color7.setOnClickListener(listener);
+		color8.setOnClickListener(listener);
+		color9.setOnClickListener(listener);
+		color10.setOnClickListener(listener);
+		color11.setOnClickListener(listener);
+		color12.setOnClickListener(listener);
+		color13.setOnClickListener(listener);
+		color14.setOnClickListener(listener);
+		color15.setOnClickListener(listener);
+		color16.setOnClickListener(listener);
+		color17.setOnClickListener(listener);
+		color18.setOnClickListener(listener);
+		color19.setOnClickListener(listener);
+		color20.setOnClickListener(listener);
 	}
 	
 	public void changeBrushSize(View view){
@@ -173,7 +213,8 @@ public class CanvasDrawer extends Activity{
 		 saveDialog.setTitle("Save Image:");
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
 			 public void onClick(DialogInterface dialog, int which){
-				 String savedImage = MediaStore.Images.Media.insertImage(
+			
+				String savedImage = MediaStore.Images.Media.insertImage(
 						 getContentResolver(), drawTool.getDrawingCache(),
 						 UUID.randomUUID().toString() + ".png", "drawing");
 				 

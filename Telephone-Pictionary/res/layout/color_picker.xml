@@ -17,6 +17,7 @@
    			android:layout_height="@dimen/xl_brush"
    			android:layout_margin="2dp"
    			android:background="#CD1076"
+   			android:id="@+id/color1"
    			android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#CD1076" />
@@ -26,6 +27,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#DC142C"
+   			android:id="@+id/color2"
     		android:contentDescription="@string/color"
     		android:src="@drawable/colors"
     		android:tag="#DC142C" />
@@ -34,6 +36,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+   			android:id="@+id/color3"
     		android:background="#EE00EE"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -44,6 +47,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+   			android:id="@+id/color4"
     		android:background="#FFC0CD"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -53,6 +57,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color5"
     		android:background="#D15FEE"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -60,7 +65,7 @@
 		</LinearLayout>
 
 	<!-- Row 2 -->
-	<LinearLayout
+	<LinearLayout 
    		android:layout_width="wrap_content"
     	android:layout_height="wrap_content"
     	android:orientation="horizontal" >
@@ -69,6 +74,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color6"
     		android:background="#9370DB"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -79,6 +85,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#3A5FCD"
+    		android:id="@+id/color7"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#3A5FCD" />
@@ -88,6 +95,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#87CEFF"
+    		android:id="@+id/color8"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#87CEFF" />
@@ -97,6 +105,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#BFEFFF"
+    		android:id="@+id/color9"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#BFEFFF" />
@@ -106,6 +115,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#008080"
+    		android:id="@+id/color10"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#008080" />
@@ -121,6 +131,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color11"
     		android:background="#B4EEB4"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -130,6 +141,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color12"
     		android:background="#6B8E23"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -139,6 +151,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color13"
     		android:background="#FFEC8B"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -149,6 +162,7 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:id="@+id/color14"
     		android:background="#FFA500"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
@@ -159,6 +173,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#CD853F"
+    		android:id="@+id/color15"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#CD853F" />
@@ -175,6 +190,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#FFEFD5"
+    		android:id="@+id/color16"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#FFEFD5" />
@@ -185,6 +201,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#CDAA7D"
+    		android:id="@+id/color17"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#CDAA7D" />
@@ -193,6 +210,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:background="#663300"
+    		android:id="@+id/color18"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#663300" />
@@ -202,6 +220,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
             android:background="#999999"
+            android:id="@+id/color19"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#999999" />
@@ -211,6 +230,7 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		 android:background="#000000"
+    		 android:id="@+id/color20"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
     		android:tag="#000000" />
