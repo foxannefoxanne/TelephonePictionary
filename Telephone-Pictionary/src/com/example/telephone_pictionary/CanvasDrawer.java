@@ -272,8 +272,12 @@ public class CanvasDrawer extends Activity{
 
    	    Model model = Model.getInstance();
 
+<<<<<<< HEAD
    	    Card cardStorage = new Card(); 
    	  //  cardStorage.Card(bitmap,Card.Type.IMAGE); 
+=======
+   	    Card cardStorage = new Card(bitmap,Card.Type.IMAGE); 
+>>>>>>> origin/master
    	    model.saveCard(cardStorage); 
 
 	}
