@@ -83,16 +83,22 @@ public class MainActivity extends Activity
 		alertDialogBuilder.setView(input);
 		
 		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dinterface, int id){
+			public void onClick(DialogInterface dInterface, int id){
 
 				int numOfPlayers = Integer.parseInt(input.getText().toString());
-				dinterface.dismiss(); // This might need to be after starting canvas writer
+				dInterface.dismiss(); // This might need to be after starting canvas writer
 				//Start Canvas Writer
 				Intent intent = new Intent();
 				intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CanvasWriter"); 
 				//intent.setExtra(); need to put the number of players in there somewhere
 				startActivity(intent);	
 				
+				/*
+				 * !!!!!!!!ROX ALERT!!!!!!!!!!!!!
+				 * I created a start game method to get different elements showing. 
+				 * Should we use this? Also, where is the numbah of playahs been implemented? 
+				 * !!!!THIS CONCLUDES THE ROX ALERT!!!!!!!!!
+				 */
 				Context context = getApplicationContext();
 				CharSequence loadingMessage = "Pass and Play mode is loading...";
 				int duration = Toast.LENGTH_SHORT;
@@ -100,8 +106,8 @@ public class MainActivity extends Activity
 			}
 		});
 		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dinterface, int id){
-				dinterface.cancel();
+			public void onClick(DialogInterface dInterface, int id){
+				dInterface.cancel();
 
 			}
 		});

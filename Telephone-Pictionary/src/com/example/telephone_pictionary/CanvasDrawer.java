@@ -266,8 +266,14 @@ public class CanvasDrawer extends Activity{
 		
 	}
 	//will eventually submit image to queue
-	public void submitImage(View view) {
-	
+	public void submitImage(){
+		
+		drawTool.setDrawingCacheEnabled(true);
+   	    Bitmap bitmap = drawTool.getDrawingCache();
+		Card cardStorage = new Card(); 
+	   cardStorage.Card(bitmap,Card.Type.IMAGE); 
+
+
 	}
 	
 

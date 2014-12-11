@@ -16,11 +16,11 @@
     		android:layout_width="@dimen/xl_brush"
    			android:layout_height="@dimen/xl_brush"
    			android:layout_margin="2dp"
-   			android:background="#CD1076"
+   			android:background="#B0171F"
    			android:id="@+id/color1"
    			android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#CD1076" />
+    		android:tag="#B0171F" />
 			
 	    <ImageButton
     		android:layout_width="@dimen/xl_brush"
@@ -37,10 +37,10 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
    			android:id="@+id/color3"
-    		android:background="#EE00EE"
+    		android:background="#D02090"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#EE00EE" />
+    		android:tag="#D02090" />
  
 
 		<ImageButton
@@ -58,10 +58,10 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:id="@+id/color5"
-    		android:background="#D15FEE"
+    		android:background="#CD69C9"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#D15FEE" />
+    		android:tag="#CD69C9" />
 		</LinearLayout>
 
 	<!-- Row 2 -->
@@ -75,10 +75,10 @@
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:id="@+id/color6"
-    		android:background="#9370DB"
+    		android:background="#7D26CD"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#9370DB" />
+    		android:tag="#7D26CD" />
  
 		<ImageButton
     		android:layout_width="@dimen/xl_brush"
@@ -114,11 +114,11 @@
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
-    		android:background="#008080"
+    		android:background="#00CDCD"
     		android:id="@+id/color10"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#008080" />
+    		android:tag="#00CDCD" />
 	</LinearLayout>
 
 	<!-- Row 3 -->
@@ -147,36 +147,38 @@
    			android:src="@drawable/colors"
     		android:tag="#6B8E23" />
  
-		<ImageButton
+			<ImageButton
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
+    		android:background="#00CD66"
     		android:id="@+id/color13"
-    		android:background="#FFEC8B"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#FFEC8B" />
- 
- 
+    		android:tag="#00CD66" />
+			
 		<ImageButton
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
     		android:id="@+id/color14"
-    		android:background="#FFA500"
+    		android:background="#FFD700"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#FFA500" />
-		
-			<ImageButton
+    		android:tag="#FFD700" />
+ 
+ 
+		<ImageButton
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
-    		android:background="#CD853F"
     		android:id="@+id/color15"
+    		android:background="#FF8C00"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#CD853F" />
+    		android:tag="FF8C00" />
+		
+		
 	</LinearLayout>
 
 	<!-- Row 4 -->

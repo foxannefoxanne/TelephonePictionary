@@ -9,7 +9,10 @@ public class Card {
 	}
 	public Bitmap m_image;
 	public Type m_type;
-	
+
+	Card (){
+		
+	}
 	Card (Bitmap image, Type type) {
 		m_image = image;
 		m_type = type;
