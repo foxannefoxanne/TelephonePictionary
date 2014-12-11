@@ -75,7 +75,7 @@ public class CanvasWriter extends Activity {
 		textInput.create().show();				
 	}
 	
-	public void submitImage(){
+	public void submitImage(View view){
 		
 		writeTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = writeTool.getDrawingCache();

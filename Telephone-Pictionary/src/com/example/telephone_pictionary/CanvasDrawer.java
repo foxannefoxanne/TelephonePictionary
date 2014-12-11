@@ -265,7 +265,7 @@ public class CanvasDrawer extends Activity{
 		
 	}
 	//will eventually submit image to queue
-	public void submitImage(){
+	public void submitImage(View view){
 		
 		drawTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = drawTool.getDrawingCache();
