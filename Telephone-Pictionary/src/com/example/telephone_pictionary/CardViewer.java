@@ -40,4 +40,6 @@ public class CardViewer extends ActionBarActivity {
 		
 		previousCard.setImageBitmap(bap); 
 	}
+
+
 }

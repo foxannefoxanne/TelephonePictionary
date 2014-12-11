@@ -16,21 +16,21 @@
     		android:layout_width="@dimen/xl_brush"
    			android:layout_height="@dimen/xl_brush"
    			android:layout_margin="2dp"
-   			android:background="#B0171F"
+   			android:background="#8B0000"
    			android:id="@+id/color1"
    			android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="#B0171F" />
+    		android:tag="#8B0000" />
 			
 	    <ImageButton
     		android:layout_width="@dimen/xl_brush"
     		android:layout_height="@dimen/xl_brush"
     		android:layout_margin="2dp"
-    		android:background="#DC142C"
+    		android:background="#FF0000"
    			android:id="@+id/color2"
     		android:contentDescription="@string/color"
     		android:src="@drawable/colors"
-    		android:tag="#DC142C" />
+    		android:tag="#FF0000" />
  
 		<ImageButton
     		android:layout_width="@dimen/xl_brush"
@@ -176,7 +176,7 @@
     		android:background="#FF8C00"
     		android:contentDescription="@string/color"
    			android:src="@drawable/colors"
-    		android:tag="FF8C00" />
+    		android:tag="#FF8C00" />
 		
 		
 	</LinearLayout>

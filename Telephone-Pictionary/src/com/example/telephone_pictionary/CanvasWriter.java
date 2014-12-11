@@ -80,7 +80,7 @@ public class CanvasWriter extends Activity {
 		writeTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = writeTool.getDrawingCache();
 		Card cardStorage = new Card(); 
-	//	cardStorage.Card(bitmap,Card.Type.TEXT); 
+		//cardStorage.Card(bitmap,Card.Type.TEXT); 
 
 
 	}

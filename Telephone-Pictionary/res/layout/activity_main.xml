@@ -63,22 +63,24 @@
         android:onClick="gameDirections"  />
 
      <Button
-        android:id="@+id/drawingcanvastemp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/explanationbutton"
-        android:layout_marginTop="28dp"
-        android:text="Draw Canvas Temp" 
-        android:onClick="drawCanvasTemp"/>
+         android:id="@+id/drawingcanvastemp"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBaseline="@+id/writingTemp"
+         android:layout_alignBottom="@+id/writingTemp"
+         android:layout_alignParentRight="true"
+         android:layout_marginRight="13dp"
+         android:onClick="drawCanvasTemp"
+         android:text="Draw Canvas Temp" />
 
      <Button
          android:id="@+id/writingTemp"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_above="@+id/explanationbutton"
-         android:layout_toLeftOf="@+id/drawingcanvastemp"
-         android:text="Write Canvas Temp"
-         android:onClick="writeCanvasTemp" />
+         android:layout_alignParentTop="true"
+         android:layout_alignRight="@+id/hostGame"
+         android:layout_marginTop="19dp"
+         android:onClick="writeCanvasTemp"
+         android:text="Write Canvas Temp" />
      
 </RelativeLayout>
