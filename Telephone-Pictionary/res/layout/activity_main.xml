@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp"
         android:scaleType="centerInside"
-        android:src="@drawable/telephonetitle" />
+        android:src="@drawable/telephonary" />
     
     <ImageButton 
         android:id="@+id/hostGame"

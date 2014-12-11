@@ -271,7 +271,7 @@ public class CanvasDrawer extends Activity{
 		drawTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = drawTool.getDrawingCache();
 		Card cardStorage = new Card(); 
-	   cardStorage.Card(bitmap,Card.Type.IMAGE); 
+	 //  cardStorage.Card(bitmap,Card.Type.IMAGE); 
 
 
 	}
