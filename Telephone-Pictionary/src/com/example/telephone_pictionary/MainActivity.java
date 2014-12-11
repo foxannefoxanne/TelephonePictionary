@@ -87,20 +87,18 @@ public class MainActivity extends Activity
 
 				int numOfPlayers = Integer.parseInt(input.getText().toString());
 				dInterface.dismiss(); // This might need to be after starting canvas writer
+				
+				// give the model the number of players
+				Model model = Model.getInstance();
+				model.setNumUsers(numOfPlayers);
+				
 				//Start Canvas Writer
 				Intent intent = new Intent();
 				intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CanvasWriter"); 
-				//intent.setExtra(); need to put the number of players in there somewhere
 				startActivity(intent);	
 				
-				/*
-				 * !!!!!!!!ROX ALERT!!!!!!!!!!!!!
-				 * I created a start game method to get different elements showing. 
-				 * Should we use this? Also, where is the numbah of playahs been implemented? 
-				 * !!!!THIS CONCLUDES THE ROX ALERT!!!!!!!!!
-				 */
 				Context context = getApplicationContext();
-				CharSequence loadingMessage = "Pass and Play mode is loading...";
+				CharSequence loadingMessage = "Game starting";
 				int duration = Toast.LENGTH_SHORT;
 				Toast.makeText(context, loadingMessage, duration).show();
 			}

@@ -27,7 +27,7 @@ public class Model
 		return instance;
 	}
 	
-	public void setUsers(int users) 
+	public void setNumUsers(int users) 
 	{
 		m_numUsers = users;
 	}
