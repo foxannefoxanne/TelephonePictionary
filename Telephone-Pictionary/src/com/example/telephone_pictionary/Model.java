@@ -9,13 +9,22 @@ public class Model
 {
 	private int m_numUsers;
 	private List<Card> m_cards;
-	boolean m_isGameOver;
+	private boolean m_isGameOver;
+	private static Model instance = null;
 	
-	public Model () 
+	protected Model () 
 	{
 		m_numUsers = 0;
 		m_cards = new ArrayList<Card>();
 		m_isGameOver = false;
+	}
+	
+	public synchronized static Model getInstance() 
+	{
+		if (instance == null) {
+			instance = new Model();
+		}
+		return instance;
 	}
 	
 	public void setUsers(int users) 
