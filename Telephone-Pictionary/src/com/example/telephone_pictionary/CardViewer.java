@@ -1,9 +1,11 @@
 package com.example.telephone_pictionary;
 
 import android.support.v7.app.ActionBarActivity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class CardViewer extends ActionBarActivity {
 
@@ -30,5 +32,12 @@ public class CardViewer extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void viewPreviousCard(Bitmap bap)
+	{
+		ImageView previousCard = (ImageView)findViewById(R.id.prevCard);
+		
+		previousCard.setImageBitmap(bap); 
 	}
 }
