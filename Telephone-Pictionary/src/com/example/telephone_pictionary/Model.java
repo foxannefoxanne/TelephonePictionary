@@ -23,6 +23,9 @@ public class Model
 		m_numUsers = users;
 	}
 	
+	/*
+	 * @return: true if game is over, false otherwise
+	 */
 	public boolean saveCard(Card card) 
 	{
 		m_cards.add(card);
