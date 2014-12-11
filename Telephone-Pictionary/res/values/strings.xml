@@ -24,5 +24,6 @@
     <string name="xsml">ExtraSmall</string>
     <string name="xl">ExtraLarge</string>
     <string name="title_activity_canvas_writer">CanvasWriter</string>
+    <string name="title_activity_card_viewer">CardViewer</string>
 
 </resources>

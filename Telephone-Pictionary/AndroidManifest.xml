@@ -7,8 +7,9 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="21" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -39,7 +40,10 @@
             android:name=".CanvasWriter"
             android:label="@string/title_activity_canvas_writer" >
         </activity>
+        <activity
+            android:name=".CardViewer"
+            android:label="@string/title_activity_card_viewer" >
+        </activity>
     </application>
-
 
 </manifest>
