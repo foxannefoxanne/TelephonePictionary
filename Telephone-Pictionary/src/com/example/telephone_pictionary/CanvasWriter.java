@@ -82,7 +82,7 @@ public class CanvasWriter extends Activity {
    	    Model model = Model.getInstance();
    	  
    	    Card cardStorage = new Card(); 
-		cardStorage.Card(bitmap,Card.Type.TEXT); 
+	//	cardStorage.Card(bitmap,Card.Type.TEXT); 
 	    model.saveCard(cardStorage); 
 
 

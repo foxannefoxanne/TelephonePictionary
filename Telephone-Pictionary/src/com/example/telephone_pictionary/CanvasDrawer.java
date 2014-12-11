@@ -262,7 +262,6 @@ public class CanvasDrawer extends Activity{
 		
 	public void eraseImage(View view){
 		drawTool.setErase(true);
-		drawTool.setBrushSize(mBrush); 
 		
 	}
 	//will eventually submit image to queue
@@ -274,7 +273,7 @@ public class CanvasDrawer extends Activity{
    	    Model model = Model.getInstance();
 
    	    Card cardStorage = new Card(); 
-   	    cardStorage.Card(bitmap,Card.Type.IMAGE); 
+   	  //  cardStorage.Card(bitmap,Card.Type.IMAGE); 
    	    model.saveCard(cardStorage); 
 
 	}

@@ -3,15 +3,15 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#3E818A" >
 
- 
-    <TextView
-        android:id="@+id/textView1"
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Make Your Guess"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:src="@drawable/type"
+         android:layout_margin="5dp" />
+
 
     	<com.example.telephone_pictionary.WritingTools
    	 		android:id="@+id/writing"
@@ -37,7 +37,8 @@
            		android:layout_width="wrap_content"
            		android:layout_height="fill_parent"
            		android:contentDescription="@string/back"
-           		android:src="@drawable/back" />
+           		android:src="@drawable/back"
+           		   android:background="@null" />
     	        	    
 
        	 	<ImageButton
@@ -45,7 +46,8 @@
            		android:layout_width="wrap_content"
            		android:layout_height="fill_parent"
            		android:contentDescription="@string/send"
-           		android:src="@drawable/send"/>
+           		android:src="@drawable/send"
+           		   android:background="@null"/>
     	</LinearLayout>
     
 </LinearLayout>
