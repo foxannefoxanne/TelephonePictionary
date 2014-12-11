@@ -106,7 +106,7 @@
            		android:layout_height="fill_parent"
            		android:contentDescription="@string/send"
            		android:src="@drawable/send"
-           		android:onclick="submitImage"
+           		android:onClick="submitImage"
            		android:background="@null"/>
     	</LinearLayout>
 </LinearLayout>
