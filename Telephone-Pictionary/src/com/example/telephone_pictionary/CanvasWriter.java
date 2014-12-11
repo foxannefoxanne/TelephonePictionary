@@ -81,8 +81,7 @@ public class CanvasWriter extends Activity {
    	    Bitmap bitmap = writeTool.getDrawingCache();
    	    Model model = Model.getInstance();
    	  
-   	    Card cardStorage = new Card(); 
-		cardStorage.Card(bitmap,Card.Type.TEXT); 
+   	    Card cardStorage = new Card(bitmap,Card.Type.TEXT); 
 	    model.saveCard(cardStorage); 
 
 
