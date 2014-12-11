@@ -44,6 +44,10 @@
             android:name=".CardViewer"
             android:label="@string/title_activity_card_viewer" >
         </activity>
+        <activity
+            android:name=".EndGame"
+            android:label="@string/title_activity_end_game" >
+        </activity>
     </application>
 
 </manifest>
