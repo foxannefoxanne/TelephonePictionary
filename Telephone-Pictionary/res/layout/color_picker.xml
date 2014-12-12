@@ -5,14 +5,13 @@
     android:orientation="vertical"
     android:background="#FFFFFF" >
 
-       <ImageView
-         android:id="@+id/header"
-        android:src="@drawable/colorheader"
+    <ImageView
+        android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-
         android:background="#6597A7"
-        android:contentDescription="@string/app_name" />
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/colorheader" />
      
 	<!-- Row 1 -->
 	<LinearLayout

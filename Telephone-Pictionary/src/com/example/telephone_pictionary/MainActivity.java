@@ -41,13 +41,14 @@ public class MainActivity extends Activity
 	public void passAndPlay(View view)
 	{
 		AlertDialog.Builder playerPicker = new AlertDialog.Builder(this);
-		playerPicker.setTitle("Pass and Play");
-		playerPicker.setMessage(R.string.numPlayers);
 		
 		LayoutInflater inflater = this.getLayoutInflater();
 		View DialogView = inflater.inflate(R.layout.number_picker, null);
 		
 		playerPicker.setView(DialogView); 
+		
+
+		
 		final NumberPicker numPlayers = (NumberPicker)DialogView.findViewById(R.id.numpick); 
 		numPlayers.setMinValue(4);
 		numPlayers.setMaxValue(20); 
