@@ -19,8 +19,6 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		// TODO: clear out model
 	}
 	
 	public void gameDirections(View view) 
@@ -60,7 +58,7 @@ public class MainActivity extends Activity
 				dInterface.dismiss(); // This might need to be after starting canvas writer
 				
 				// give the model the number of players
-				// TODO: create new model
+				Model.clearModel();
 				Model model = Model.getInstance();
 				model.setNumUsers(numOfPlayers);
 				

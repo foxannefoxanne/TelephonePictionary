@@ -7,7 +7,7 @@ public class Model
 {
 	private int m_numUsers;
 	private List<Card> m_cards;
-	private static Model instance = null;
+	private static Model m_instance = null;
 	
 	protected Model () 
 	{
@@ -17,10 +17,15 @@ public class Model
 	
 	public synchronized static Model getInstance() 
 	{
-		if (instance == null) {
-			instance = new Model();
+		if (m_instance == null) {
+			m_instance = new Model();
 		}
-		return instance;
+		return m_instance;
+	}
+	
+	public static void clearModel() 
+	{
+		m_instance = null;
 	}
 	
 	public void setNumUsers(int users) 
