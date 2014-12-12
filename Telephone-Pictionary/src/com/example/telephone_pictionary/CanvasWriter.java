@@ -42,11 +42,13 @@ public class CanvasWriter extends Activity {
 	public void submitImage(View view) {
 		
 		//convert edit text to bitmap
+		eText.setCursorVisible(false);
+		eText.clearComposingText();
 		eText.setDrawingCacheEnabled(true);
 		eText.buildDrawingCache(); 
    	    Bitmap bitmap = eText.getDrawingCache();
  
-   	    //call model, store card; 
+   	    //call model, store card. 
    	    Model model = Model.getInstance();
    	    Card cardStorage = new Card(bitmap,Card.Type.TEXT); 
 
