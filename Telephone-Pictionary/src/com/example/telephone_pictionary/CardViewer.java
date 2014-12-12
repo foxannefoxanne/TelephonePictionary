@@ -13,6 +13,9 @@ public class CardViewer extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_viewer);
+		
+		Model model = Model.getInstance();
+		viewPreviousCard(model.getLastCard().m_image);
 	}
 	
 	public void toCanvas(View view) {
@@ -33,9 +36,6 @@ public class CardViewer extends Activity {
 	public void viewPreviousCard(Bitmap bap)
 	{
 		ImageView previousCard = (ImageView)findViewById(R.id.prevCard);
-		
 		previousCard.setImageBitmap(bap); 
 	}
-
-
 }
