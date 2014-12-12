@@ -41,7 +41,8 @@
            		android:layout_height="fill_parent"
            		android:contentDescription="@string/back"
            		android:src="@drawable/back"
-           		   android:background="@null" />
+           		android:background="@null"
+           		android:onClick="toCardView" />
     	        	    
 
        	 	<ImageButton

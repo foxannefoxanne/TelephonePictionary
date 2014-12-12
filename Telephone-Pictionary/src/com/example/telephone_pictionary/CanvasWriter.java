@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,20 +26,25 @@ public class CanvasWriter extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canvas_writer);
-		
-
+	
 		eText = (EditText) findViewById(R.id.writingeditor);
 		writingBitmap = Bitmap.createBitmap(50,50, Bitmap.Config.ARGB_8888);
 		writingCanvas = new Canvas(writingBitmap);
+		
+		Model mod = Model.getInstance();
 
-		//if ()
-			//ImageButton hideBack = (ImageButton)findViewById(R.id.back_button);
-			//hideBack = setInvisibility(View.GONE); 
+		if (mod.getTurn() == 1) {
+			ImageButton hideBack = (ImageButton)findViewById(R.id.back_button);
+			hideBack.setVisibility(View.GONE); 
+		}
 	}
 
-	
+	public void toCardView(View view) {
+		Intent intent = new Intent(this, CardViewer.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		startActivity(intent);
+	}
 
-	
 	public void submitImage(View view) {
 		
 		//convert edit text to bitmap

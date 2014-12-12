@@ -45,9 +45,10 @@ public class CanvasDrawer extends Activity{
 	//	saveButton.setOnClickListener(this);
 	}
 	
-	// eventually will switch to previous card view
 	public void toCardView(View view) {
-		
+		Intent intent = new Intent(this, CardViewer.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		startActivity(intent);
 	}
 	
 	// to instructions page. 
