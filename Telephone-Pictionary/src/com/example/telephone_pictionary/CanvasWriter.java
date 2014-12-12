@@ -31,6 +31,9 @@ public class CanvasWriter extends Activity {
 		writingBitmap = Bitmap.createBitmap(50,50, Bitmap.Config.ARGB_8888);
 		writingCanvas = new Canvas(writingBitmap);
 
+		//if ()
+			//ImageButton hideBack = (ImageButton)findViewById(R.id.back_button);
+			//hideBack = setInvisibility(View.GONE); 
 	}
 
 	
@@ -38,14 +41,13 @@ public class CanvasWriter extends Activity {
 	
 	public void submitImage(View view) {
 		
-
+		//convert edit text to bitmap
 		eText.setDrawingCacheEnabled(true);
 		eText.buildDrawingCache(); 
-		
-	
    	    Bitmap bitmap = eText.getDrawingCache();
+ 
+   	    //call model, store card; 
    	    Model model = Model.getInstance();
-   	  
    	    Card cardStorage = new Card(bitmap,Card.Type.TEXT); 
 
 	    if (model.saveCard(cardStorage)) {
