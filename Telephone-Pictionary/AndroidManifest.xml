@@ -48,6 +48,10 @@
             android:name=".EndGame"
             android:label="@string/title_activity_end_game" >
         </activity>
+        <activity
+            android:name=".CardFragment"
+            android:label="@string/title_activity_card_fragment" >
+        </activity>
     </application>
 
 </manifest>
