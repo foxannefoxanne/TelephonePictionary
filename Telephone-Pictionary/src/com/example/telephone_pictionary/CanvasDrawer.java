@@ -178,7 +178,7 @@ public class CanvasDrawer extends Activity{
 	public void savetoDevice(View view) {
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image:");
-		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
 				 drawTool.setDrawingCacheEnabled(true);
 				 Bitmap bitmap = drawTool.getDrawingCache();
@@ -245,12 +245,14 @@ public class CanvasDrawer extends Activity{
    	    	// end of game
 	    	Intent intent = new Intent();
 	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 	    	startActivity(intent);
    	    }
    	    else {
    	    	// pass to next player
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);	
 			
 			Context context = getApplicationContext();

@@ -45,8 +45,6 @@ public class WritingTools extends View {
 	
 	public void createText(String text)
 	{
-
-	
 		TextPaint textPaint = new TextPaint(); 
 		textPaint.setColor(Color.BLACK);
 		textPaint.setTextSize(100); 

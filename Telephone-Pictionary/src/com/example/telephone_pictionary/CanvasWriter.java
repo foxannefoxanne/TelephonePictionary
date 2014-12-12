@@ -8,8 +8,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -70,12 +68,14 @@ public class CanvasWriter extends Activity {
 	    	// end game
 	    	Intent intent = new Intent();
 	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 	    	startActivity(intent);
 	    }
 	    else {
 	    	// go to card viewer
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
+			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);
 			
 			Context context = getApplicationContext();

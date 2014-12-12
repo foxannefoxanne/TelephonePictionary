@@ -11,8 +11,8 @@ public class Card {
 	public Type m_type;
 
 	Card (){
-		
 	}
+	
 	Card (Bitmap image, Type type) {
 		m_image = image;
 		m_type = type;

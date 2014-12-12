@@ -19,6 +19,8 @@ public class MainActivity extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		// TODO: clear out model
 	}
 	
 	public void gameDirections(View view) 
@@ -44,8 +46,6 @@ public class MainActivity extends Activity
 	// This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
 	{
-		// Intent intent = new Intent(this, PassPlay.class);
-		// startActivity(intent);
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		alertDialogBuilder.setTitle("Pass and Play");
 		alertDialogBuilder.setMessage(R.string.numPlayers);
@@ -53,19 +53,21 @@ public class MainActivity extends Activity
 		final EditText input  = new EditText(this);
 		alertDialogBuilder.setView(input);
 		
-		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dInterface, int id){
+		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dInterface, int id) {
 
 				int numOfPlayers = Integer.parseInt(input.getText().toString());
 				dInterface.dismiss(); // This might need to be after starting canvas writer
 				
 				// give the model the number of players
+				// TODO: create new model
 				Model model = Model.getInstance();
 				model.setNumUsers(numOfPlayers);
 				
-				//Start Canvas Writer
+				// Start Canvas Writer
 				Intent intent = new Intent();
 				intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CanvasWriter"); 
+				intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				startActivity(intent);	
 				
 				Context context = getApplicationContext();
@@ -74,23 +76,11 @@ public class MainActivity extends Activity
 				Toast.makeText(context, loadingMessage, duration).show();
 			}
 		});
-		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
-			public void onClick(DialogInterface dInterface, int id){
+		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dInterface, int id) {
 				dInterface.cancel();
-
 			}
 		});
 		alertDialogBuilder.create().show();
 	}
-	
-	public void drawCanvasTemp(View view){
-		Intent intent3 = new Intent(this, CanvasDrawer.class);
-		startActivity(intent3);
-	}
-	
-	public void writeCanvasTemp(View view){
-		Intent intent3 = new Intent(this, CanvasWriter.class);
-		startActivity(intent3);
-	}
-	
 }
