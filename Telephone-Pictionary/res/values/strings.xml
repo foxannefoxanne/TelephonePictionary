@@ -26,5 +26,10 @@
     <string name="title_activity_canvas_writer">CanvasWriter</string>
     <string name="title_activity_card_viewer">CardViewer</string>
     <string name="title_activity_end_game">EndGame</string>
+<<<<<<< HEAD
 	<string name="about_game">About The Game</string>
+=======
+    <string name="title_activity_card_fragment">CardFragment</string>
+
+>>>>>>> origin/master
 </resources>

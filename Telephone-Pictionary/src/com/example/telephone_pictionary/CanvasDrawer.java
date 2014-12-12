@@ -37,8 +37,6 @@ public class CanvasDrawer extends Activity{
 		xlBrush = getResources().getInteger(R.integer.xlarge); 
 		
 		drawTool.setDrawingCacheEnabled(true);
-	
-		
 
 	//	drawButton = (ImageButton)findViewById(R.id.drawing); 
 	//	drawButton.setOnClickListener(this); 
@@ -177,7 +175,7 @@ public class CanvasDrawer extends Activity{
 	// function to save images
 	public void savetoDevice(View view) {
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-		 saveDialog.setTitle("Save Image:");
+		 saveDialog.setTitle("Save Image?");
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
 				 drawTool.setDrawingCacheEnabled(true);
@@ -212,7 +210,7 @@ public class CanvasDrawer extends Activity{
 	// clear image
 	public void clearImage(View view) {
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
-		resetDialog.setTitle("Clear Image:");
+		resetDialog.setTitle("Clear Image?");
 		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				drawTool.startNew(); 

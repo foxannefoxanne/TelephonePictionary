@@ -8,9 +8,11 @@ public class Model
 	private int m_numUsers;
 	private List<Card> m_cards;
 	private static Model m_instance = null;
+	private int turn;
 	
 	protected Model () 
 	{
+		turn = 1;
 		m_numUsers = 0;
 		m_cards = new ArrayList<Card>();
 	}
@@ -33,12 +35,18 @@ public class Model
 		m_numUsers = users;
 	}
 	
+	public int getNumUsers() 
+	{
+		return m_numUsers;
+	}
+	
 	/*
 	 * @return: true if game is over, false otherwise
 	 */
 	public boolean saveCard(Card card) 
 	{
 		m_cards.add(card);
+		turn++;
 		if (m_cards.size() == m_numUsers) {
 			// game needs to end
 			return true;
@@ -55,8 +63,13 @@ public class Model
 		return m_cards.get(m_cards.size() - 1);
 	}
 	
-	public List<Card> getAllCards() 
+	public Card getCard(int index) 
 	{
-		return m_cards;
+		return m_cards.get(index);
+	}
+	
+	public int getTurn()
+	{
+		return turn;
 	}
 }
