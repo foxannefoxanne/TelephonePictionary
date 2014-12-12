@@ -3,6 +3,7 @@ package com.example.telephone_pictionary;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CanvasWriter extends Activity {
 	private WritingTools writeTool; 
@@ -94,7 +96,12 @@ public class CanvasWriter extends Activity {
 	    	// go to card viewer
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
-			startActivity(intent);	
+			startActivity(intent);
+			
+			Context context = getApplicationContext();
+			CharSequence loadingMessage = "Pass to next player";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, loadingMessage, duration).show();
 	    }
 
 	}

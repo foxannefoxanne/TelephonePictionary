@@ -8,21 +8,19 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.UUID;
+
 import android.provider.MediaStore;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -275,15 +273,24 @@ public class CanvasDrawer extends Activity{
    	    Card cardStorage = new Card(bitmap,Card.Type.IMAGE); 
 
    	    if (model.saveCard(cardStorage)) {
+   	    	// end of game
 	    	Intent intent = new Intent();
 	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
 	    	startActivity(intent);
    	    }
    	    else {
+   	    	// pass to next player
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
 			startActivity(intent);	
+			
+			Context context = getApplicationContext();
+			CharSequence loadingMessage = "Pass to next player";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, loadingMessage, duration).show();
    	    }
+   	    
+   	    
 
 	}
 	

@@ -26,7 +26,7 @@
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:src="@drawable/hostgame"
+        android:background="@drawable/hostgame"
         android:onClick="newGame"/> 
         
     
