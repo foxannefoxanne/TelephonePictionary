@@ -174,6 +174,8 @@ public class CanvasDrawer extends Activity{
 	// NEEDS HELP. 
 	// function to save images
 	public void savetoDevice(View view) {
+	
+		
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image?");
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
