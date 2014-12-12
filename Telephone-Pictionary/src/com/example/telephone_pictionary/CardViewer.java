@@ -15,13 +15,13 @@ public class CardViewer extends Activity {
 		setContentView(R.layout.activity_card_viewer);
 		
 		Model model = Model.getInstance();
-		viewPreviousCard(model.getLastCard().m_image);
+		viewPreviousCard(model.getLastCard().getImage());
 	}
 	
 	public void toCanvas(View view) {
 		// take viewer to appropriate canvas
 		Model model = Model.getInstance();
-		if (model.getLastCard().m_type == Card.Type.TEXT) {
+		if (model.getLastCard().getType() == Card.Type.TEXT) {
 			Intent intent = new Intent(this, CanvasDrawer.class);
 			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);

@@ -7,14 +7,22 @@ public class Card {
 		IMAGE,
 		TEXT
 	}
-	public Bitmap m_image;
-	public Type m_type;
+	private Bitmap m_image;
+	private Type m_type;
 
-	Card (){
+	public Card (){
 	}
 	
-	Card (Bitmap image, Type type) {
-		m_image = image;
+	public Card (Bitmap image, Type type) {
+		m_image = image.copy(image.getConfig(), false);
 		m_type = type;
+	}
+	
+	public Bitmap getImage() {
+		return m_image;
+	}
+	
+	public Card.Type getType() {
+		return m_type;
 	}
 }

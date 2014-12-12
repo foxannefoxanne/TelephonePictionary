@@ -38,9 +38,9 @@ public class CardFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
        
         Model mod = Model.getInstance();
-        Bitmap bap = mod.getCard(m_num).m_image;
+        Bitmap bap = mod.getCard(m_num).getImage();
        
-        m_imageView = (ImageView)getView().findViewById(R.id.cardView);
+        //m_imageView = (ImageView)getView().findViewById(R.id.cardView);
         m_imageView.setImageBitmap(bap); // Load image into ImageView
     }
 }
