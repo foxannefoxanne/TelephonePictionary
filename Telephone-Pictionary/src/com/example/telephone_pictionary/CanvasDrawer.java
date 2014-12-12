@@ -4,18 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.UUID;
 
-import android.provider.MediaStore;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -28,7 +22,6 @@ import android.graphics.Bitmap.CompressFormat;
 public class CanvasDrawer extends Activity{
 
 	private DrawingTools drawTool; 
-	private ImageButton currPaint, drawButton, saveButton, clearButton; 
 	private float xsBrush, sBrush, mBrush, lBrush, xlBrush;
 	
 	@Override
@@ -53,39 +46,18 @@ public class CanvasDrawer extends Activity{
 	//	saveButton = (ImageButton)findViewById(R.id.save_button);
 	//	saveButton.setOnClickListener(this);
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.canvas_drawer, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
 	
-	//eventually will switch to previous card view
+	// eventually will switch to previous card view
 	public void toCardView(View view) {
 		
 	}
 	
-	//to instructions page. 
+	// to instructions page. 
 	public void toInstructions(View view) {
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);
 	}
 
-	
-	
 	public void changeColor(View view) {
 		final Dialog colorChooser = new Dialog(this);
 		colorChooser.setTitle("Color:");
@@ -201,10 +173,8 @@ public class CanvasDrawer extends Activity{
 		
 	}	
 	
-
-
-	//NEEDS HELP. 
-	//function to save images
+	// NEEDS HELP. 
+	// function to save images
 	public void savetoDevice(View view) {
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image:");
@@ -221,10 +191,10 @@ public class CanvasDrawer extends Activity{
 					 bitmap.compress(CompressFormat.PNG, 100, ostream);
 					 ostream.flush();
 					 ostream.close();
-					 Toast.makeText(getApplicationContext(), "image saved", 5000).show();
+					 Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
 				} catch (Exception e) {
 					e.printStackTrace();
-					Toast.makeText(getApplicationContext(), "error", 5000).show();
+					Toast.makeText(getApplicationContext(), "Error", 5000).show();
 				}
 
 				 drawTool.destroyDrawingCache();
@@ -260,9 +230,8 @@ public class CanvasDrawer extends Activity{
 		
 	public void eraseImage(View view) {
 		drawTool.setErase(true);
-		
 	}
-	//will eventually submit image to queue
+
 	public void submitImage(View view) {
 		
 		drawTool.setDrawingCacheEnabled(true);
@@ -290,10 +259,6 @@ public class CanvasDrawer extends Activity{
 			Toast.makeText(context, loadingMessage, duration).show();
    	    }
    	    
-   	    
-
 	}
-	
-
 	
 }

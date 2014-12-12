@@ -10,8 +10,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.view.MotionEvent;
-import android.graphics.PorterDuff.Mode;
-import android.graphics.PorterDuffXfermode;
 import android.util.TypedValue;
 import android.graphics.Color;
 
@@ -43,7 +41,7 @@ public class DrawingTools extends View {
 		drawPaint.setStrokeJoin(Paint.Join.ROUND);
 		drawPaint.setStrokeCap(Paint.Cap.ROUND);
 		
-		//Eclipe describes dither_flag as:
+		// Eclipe describes dither_flag as:
 		//"Paint flag that enables dithering when blitting."
 		canvasPaint = new Paint(Paint.DITHER_FLAG);
 		
@@ -54,7 +52,7 @@ public class DrawingTools extends View {
 	}
 	
 	@Override
-	protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight){
+	protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
 		
 		super.onSizeChanged(width, height, oldWidth, oldHeight);
 		drawingBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
@@ -62,7 +60,7 @@ public class DrawingTools extends View {
 	}
 	
 	@Override
-	protected void onDraw(Canvas canvas){
+	protected void onDraw(Canvas canvas) {
 		
 		canvas.drawBitmap(drawingBitmap, 0, 0, canvasPaint);
 		canvas.drawPath(drawPath, drawPaint);
@@ -93,34 +91,34 @@ public class DrawingTools extends View {
 		return true; 
 	}
 	
-	public void startNew(){
+	public void startNew() {
 		drawingCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
 		invalidate(); 
 	
 
 	}
 	
-	public void setColor(String color){
+	public void setColor(String color) {
 		invalidate(); 
 		paintColor = Color.parseColor(color);
 		drawPaint.setColor(paintColor);  
 	}
 	
-	public void setBrushSize(float newSize){
+	public void setBrushSize(float newSize) {
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
 		brushSize = pixelAmount; 
 		drawPaint.setStrokeWidth(brushSize); 
 	}
 	
-	public void setLastBrushSize(float lastSize){
+	public void setLastBrushSize(float lastSize) {
 		lastBrushSize = lastSize; 
 	}
 	
-	public float getLastBrushSize(){
+	public float getLastBrushSize() {
 		return lastBrushSize; 
 	}
 	
-	public void setErase(boolean isErase){
+	public void setErase(boolean isErase) {
 		erase = isErase; 
 		
 		if(erase){

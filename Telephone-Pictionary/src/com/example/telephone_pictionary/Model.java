@@ -3,20 +3,16 @@ package com.example.telephone_pictionary;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.graphics.Bitmap;
-
 public class Model 
 {
 	private int m_numUsers;
 	private List<Card> m_cards;
-	private boolean m_isGameOver;
 	private static Model instance = null;
 	
 	protected Model () 
 	{
 		m_numUsers = 0;
 		m_cards = new ArrayList<Card>();
-		m_isGameOver = false;
 	}
 	
 	public synchronized static Model getInstance() 
