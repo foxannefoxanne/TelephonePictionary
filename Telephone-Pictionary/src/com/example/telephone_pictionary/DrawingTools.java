@@ -18,7 +18,7 @@ public class DrawingTools extends View {
 	
 	private Path drawPath;
 	private Paint drawPaint, canvasPaint;
-	private int paintColor = 0xFFFFFF, lastColor;
+	private int paintColor;
 	private Canvas drawingCanvas;
 	private Bitmap drawingBitmap; 
 	private float brushSize, lastBrushSize;
@@ -33,6 +33,9 @@ public class DrawingTools extends View {
 		drawPath = new Path();
 		drawPaint = new Paint();
 		
+		String colorName = "#000000";
+		paintColor = Color.parseColor(colorName);
+
 		drawPaint.setColor(paintColor);
 		drawPaint.setStrokeWidth(20);
 		
