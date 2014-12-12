@@ -6,13 +6,26 @@
     android:orientation="vertical"
     android:background="#3E818A" >
 
-    <ImageView
+   
+ <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+ <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/type"
-         android:layout_margin="5dp" />
-
-
+         android:layout_margin="3dp" />
+ 
+   	<ImageButton
+    	    android:id="@+id/explanationbutton"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginTop="2dp"
+    	    android:background="@drawable/questionmark"
+    	    android:layout_alignParentRight="true"
+    	    android:onClick="gameDirections" />
+</RelativeLayout>
+    
     	<com.example.telephone_pictionary.WritingTools
    	 		android:id="@+id/writing"
     		android:layout_width="fill_parent"

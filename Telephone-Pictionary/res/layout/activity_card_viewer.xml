@@ -3,8 +3,35 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+     android:background="#3E818A" >
 
+    
+ <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+ <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/view"
+         android:layout_margin="3dp" />
+ 
+   	<ImageButton
+    	    android:id="@+id/explanationbutton"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginTop="2dp"
+    	    android:background="@drawable/questionmark"
+    	    android:layout_alignParentRight="true"
+    	    android:onClick="gameDirections" />
+</RelativeLayout>
+    
+    <ImageView
+        android:id="@+id/prevCard"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+    
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="30dp"
@@ -16,7 +43,8 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:contentDescription="@string/save"
-            android:onClick="savetoDevice"
+            android:onClick="savetoDevice"   
+            android:background = "@null"
             android:src="@drawable/save" />
 
         <ImageButton
@@ -25,13 +53,9 @@
             android:layout_height="fill_parent"
             android:contentDescription="@string/back"
             android:onClick="toCanvas"
+            android:background = "@null"
             android:src="@drawable/forward" />
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/prevCard"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         />
-
+    
+    
 </LinearLayout>
