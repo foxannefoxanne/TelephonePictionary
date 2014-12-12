@@ -6,8 +6,11 @@ import android.content.Intent;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View; 
 import android.widget.EditText;
+import android.widget.NumberPicker;
+import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.Toast;
 
 
@@ -37,17 +40,30 @@ public class MainActivity extends Activity
 	// This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
 	{
-		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		alertDialogBuilder.setTitle("Pass and Play");
-		alertDialogBuilder.setMessage(R.string.numPlayers);
+		AlertDialog.Builder playerPicker = new AlertDialog.Builder(this);
+		playerPicker.setTitle("Pass and Play");
+		playerPicker.setMessage(R.string.numPlayers);
 		
-		final EditText input  = new EditText(this);
-		alertDialogBuilder.setView(input);
+		LayoutInflater inflater = this.getLayoutInflater();
+		View DialogView = inflater.inflate(R.layout.number_picker, null);
 		
-		alertDialogBuilder.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+		playerPicker.setView(DialogView); 
+		final NumberPicker numPlayers = (NumberPicker)DialogView.findViewById(R.id.numpick); 
+		numPlayers.setMinValue(4);
+		numPlayers.setMaxValue(20); 
+		numPlayers.setWrapSelectorWheel(false);
+        numPlayers.setValue(4);
+      //  numPlayers.setDisplay(this);
+		//		final NumberPicker aNumberPicker = new NumberPicker()
+	//	final EditText input  = new EditText(this);
+		//alertDialogBuilder.setView(input);
+		
+		
+		
+			playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dInterface, int id) {
 
-				int numOfPlayers = Integer.parseInt(input.getText().toString());
+				int numOfPlayers = numPlayers.getValue();
 				dInterface.dismiss(); // This might need to be after starting canvas writer
 				
 				// give the model the number of players
@@ -67,11 +83,11 @@ public class MainActivity extends Activity
 				Toast.makeText(context, loadingMessage, duration).show();
 			}
 		});
-		alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+			playerPicker.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dInterface, int id) {
 				dInterface.cancel();
 			}
 		});
-		alertDialogBuilder.create().show();
+		playerPicker.create().show();
 	}
 }
