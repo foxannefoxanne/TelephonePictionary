@@ -28,13 +28,6 @@ public class MainActivity extends Activity
 	    startActivity(intent);
 	}
 	
-	public void newGame(View view)
-	{
-		// this is crashing. i will have to check this out later. 
-		Intent intent2 = new Intent(this, Connect.class);
-		startActivity(intent2);
-	} 
-	
 	// This is what happens when Join Game button is pushed.
 	public void joinGame(View view)
 	{
