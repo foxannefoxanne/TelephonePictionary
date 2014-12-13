@@ -30,6 +30,7 @@ public class CanvasDrawer extends Activity{
 		setContentView(R.layout.activity_canvas_drawer);
 		drawTool = (DrawingTools)findViewById(R.id.drawing);
 		
+		//set up brushes for later user
 		xsBrush = getResources().getInteger(R.integer.xsmall);
 		sBrush = getResources().getInteger(R.integer.small);
 		mBrush = getResources().getInteger(R.integer.med);
@@ -38,11 +39,7 @@ public class CanvasDrawer extends Activity{
 		
 		drawTool.setDrawingCacheEnabled(true);
 
-	//	drawButton = (ImageButton)findViewById(R.id.drawing); 
-	//	drawButton.setOnClickListener(this); 
-	
-	//	saveButton = (ImageButton)findViewById(R.id.save_button);
-	//	saveButton.setOnClickListener(this);
+
 	}
 	
 	public void toCardView(View view) {
@@ -59,7 +56,7 @@ public class CanvasDrawer extends Activity{
 
 	public void changeColor(View view) {
 		final Dialog colorChooser = new Dialog(this);
-		colorChooser.setTitle("Color:");
+	//	colorChooser.setTitle("Color:");
 	    colorChooser.setContentView(R.layout.color_picker); 
 	    
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
