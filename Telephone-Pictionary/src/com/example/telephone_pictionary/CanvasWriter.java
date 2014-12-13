@@ -39,6 +39,13 @@ public class CanvasWriter extends Activity {
 		}
 	}
 
+	// to instructions page. 
+	public void toInstructions(View view) {
+		Intent intent = new Intent(this, Explanation.class);
+	    startActivity(intent);
+	}
+
+	
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);

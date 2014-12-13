@@ -6,12 +6,31 @@
     android:orientation="vertical"
     android:background="#3E818A" >
 
-
+    
+ <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:paddingRight = "5dp">
+ 
   <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/result"
-         android:layout_margin="3dp" />
+        android:layout_margin="3dp" />
+     	
+   <ImageButton
+  	    android:id="@+id/explanationbutton"
+        android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:layout_marginTop="2dp"
+   	    android:background="@drawable/questionmark"
+   	    android:layout_alignParentRight="true" 
+   	    android:onClick="toInstructions" />
+	
+	</RelativeLayout>
+	
  
   
  <android.support.v4.view.ViewPager
