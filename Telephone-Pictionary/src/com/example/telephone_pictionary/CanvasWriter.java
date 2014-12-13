@@ -62,20 +62,27 @@ public class CanvasWriter extends Activity {
 	    	// end game
 	    	Intent intent = new Intent();
 	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 	    	startActivity(intent);
+	    	
+			Context context = getApplicationContext();
+			CharSequence loadingMessage = "End of Game\nSwipe ->";
+			int duration = Toast.LENGTH_SHORT;
+			Toast.makeText(context, loadingMessage, duration).show();
+			
+			finish();
 	    }
 	    else {
 	    	// go to card viewer
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);
 			
 			Context context = getApplicationContext();
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
+			
+			finish();
 	    }
 
 	}

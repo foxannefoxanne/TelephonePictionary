@@ -75,7 +75,6 @@ public class MainActivity extends Activity
 				// Start Canvas Writer
 				Intent intent = new Intent();
 				intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CanvasWriter"); 
-				intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 				startActivity(intent);	
 				
 				Context context = getApplicationContext();

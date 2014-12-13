@@ -31,13 +31,13 @@ public class CardViewer extends Activity {
 		Model model = Model.getInstance();
 		if (model.getLastCard().getType() == Card.Type.TEXT) {
 			Intent intent = new Intent(this, CanvasDrawer.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);
+			finish();
 		}
 		else {
 			Intent intent = new Intent(this, CanvasWriter.class);
-			intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
 			startActivity(intent);
+			finish();
 		}
 	}
 	
