@@ -2,48 +2,63 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+     >
  
-        <ImageButton
-    android:id="@+id/xs_brush"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:contentDescription="@string/xsml"
-    android:layout_weight="1"
-    android:src="@drawable/xsmall" />
- 
+    <ImageView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#6597A7"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/brushsize" />
+     
         
-    <ImageButton
-    android:id="@+id/s_brush"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" 
-   android:contentDescription="@string/small"
-    android:layout_weight="1"
-    android:src="@drawable/small" />
+    <LinearLayout
+    	android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+    	android:gravity="center"
+    	android:orientation="vertical" >
+    
+    	<ImageButton
+    		android:id="@+id/xs_brush"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:contentDescription="@string/xsml"
+    		android:layout_weight="1"
+    		android:src="@drawable/xsmall" />
  
-<ImageButton
-    android:id="@+id/m_brush"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:contentDescription="@string/med"
-    android:src="@drawable/medium" />
+    	<ImageButton
+    		android:id="@+id/s_brush"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" 
+   			android:contentDescription="@string/small"
+    		android:layout_weight="1"
+    		android:src="@drawable/small" />
  
-<ImageButton
-    android:id="@+id/l_brush"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:contentDescription="@string/large"
-    android:src="@drawable/large" />
+		<ImageButton
+    		android:id="@+id/m_brush"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:contentDescription="@string/med"
+    		android:src="@drawable/medium" />
+ 
+		<ImageButton
+    		android:id="@+id/l_brush"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:layout_weight="1"
+    		android:contentDescription="@string/large"
+    		android:src="@drawable/large" />
 
-    <ImageButton
-    android:id="@+id/xl_brush"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:contentDescription="@string/xl"
-    android:layout_weight="1"
-    android:src="@drawable/xlarge" />
- 
-
+    	<ImageButton
+    		android:id="@+id/xl_brush"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content"
+    		android:contentDescription="@string/xl"
+    		android:layout_weight="1"
+    		android:src="@drawable/xlarge" /> 
+    	
+   </LinearLayout>
 </LinearLayout>

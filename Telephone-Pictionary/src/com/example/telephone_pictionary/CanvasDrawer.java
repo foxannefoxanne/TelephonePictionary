@@ -4,7 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 
 import java.io.File;
@@ -58,9 +60,14 @@ public class CanvasDrawer extends Activity{
 
 	//do i want to change this to alert dialog? 
 	public void changeColor(View view) {
+
+		//create dialog, disable standard android title
 		final Dialog colorChooser = new Dialog(this);
+	    colorChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    colorChooser.setContentView(R.layout.color_picker); 
+
 	    
+	    //large, gross chunk of code. initializes each button to a color
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
 	    ImageButton color2 = (ImageButton)colorChooser.findViewById(R.id.color2);
 	    ImageButton color3 = (ImageButton)colorChooser.findViewById(R.id.color3);
@@ -83,6 +90,7 @@ public class CanvasDrawer extends Activity{
 	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
 	
 
+	    //on click. if color is selected, changes in draw tools and closes dialog
 	    OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {	
 			drawTool.setErase(false); 
@@ -92,6 +100,7 @@ public class CanvasDrawer extends Activity{
 		}};
 		colorChooser.show();
 
+		//another super gross chunk of code to set up onclick
 		color1.setOnClickListener(listener);
 		color2.setOnClickListener(listener);
 		color3.setOnClickListener(listener);
@@ -114,60 +123,58 @@ public class CanvasDrawer extends Activity{
 		color20.setOnClickListener(listener);
 	}
 	
-	//alert dialog? 
 	public void changeBrushSize(View view) {
-	    final Dialog brushChooser = new Dialog(this); 
-		brushChooser.setTitle("Brush size:");
-		brushChooser.setContentView(R.layout.brush_picker);
-		drawTool.setErase(false); 
 
+		final Dialog brushChooser = new Dialog(this); 
+	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    brushChooser.setContentView(R.layout.brush_picker);
+		
+	    drawTool.setErase(false); 
+	    
+	    //initiate all buttons
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
-		xsButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick (View v) {
-				drawTool.setBrushSize(xsBrush);
-				drawTool.setLastBrushSize(xsBrush); 
-				brushChooser.dismiss();
-			} }); 
-
-		
 		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
-			sButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick (View v) {
-				drawTool.setBrushSize(sBrush);
-				drawTool.setLastBrushSize(sBrush); 
-				brushChooser.dismiss();
-			} }); 
-		
 		ImageButton mButton = (ImageButton)brushChooser.findViewById(R.id.m_brush);
-		mButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick (View v){
-				drawTool.setBrushSize(mBrush);
-				drawTool.setLastBrushSize(mBrush); 
-				brushChooser.dismiss();
-			}}); 
-		
-		
 		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
-		lButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick (View v){
-				drawTool.setBrushSize(lBrush);
-				drawTool.setLastBrushSize(lBrush); 
-				brushChooser.dismiss();
-			}}); 
-		
 		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
-		xlButton.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick (View v){
-				drawTool.setBrushSize(xlBrush);
-				drawTool.setLastBrushSize(xlBrush); 
-				brushChooser.dismiss();
-			}}); 
-		
+	
+		//on click to change all brush sizes
+		 OnClickListener listener = new OnClickListener() {
+				public void onClick(View v) {	
+				 switch(v.getId())
+				 {
+				 	case R.id.xs_brush:
+				 		drawTool.setBrushSize(xsBrush);
+						drawTool.setLastBrushSize(xsBrush); 
+						break; 
+				 	case R.id.s_brush:
+				 		drawTool.setBrushSize(sBrush);
+						drawTool.setLastBrushSize(sBrush); 
+						break; 
+				 	case R.id.m_brush:
+				 		drawTool.setBrushSize(mBrush);
+						drawTool.setLastBrushSize(mBrush); 
+						break; 
+				 	case R.id.l_brush:
+				 		drawTool.setBrushSize(lBrush);
+						drawTool.setLastBrushSize(lBrush); 
+						break; 
+				 	case R.id.xl_brush:
+				 		drawTool.setBrushSize(xlBrush);
+						drawTool.setLastBrushSize(xlBrush); 
+						break; 
+				 }
+				 	brushChooser.dismiss();
+				}};
+		  
+		//set up listener with buttons
+		xsButton.setOnClickListener(listener);
+		sButton.setOnClickListener(listener);
+		mButton.setOnClickListener(listener);
+		lButton.setOnClickListener(listener);
+		xlButton.setOnClickListener(listener);
+
+		//show dialog
 		brushChooser.show();
 		
 	}	
@@ -221,8 +228,10 @@ public class CanvasDrawer extends Activity{
 
 	// clear image
 	public void clearImage(View view) {
+	
 		//build alert dialog
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
+		
 		resetDialog.setTitle("Clear Image?");
 		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {

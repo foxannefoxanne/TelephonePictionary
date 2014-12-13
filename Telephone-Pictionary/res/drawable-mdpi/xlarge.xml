@@ -6,6 +6,6 @@
         android:height="@dimen/xl_brush"
         android:width="@dimen/xl_brush" />
  
-    <solid android:color="#53868B" />
+    <solid android:color="#276275" />
  
 </shape>
