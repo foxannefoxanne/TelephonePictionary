@@ -37,6 +37,7 @@ public class MainActivity extends Activity
 		// Intent intent = new Intent(this, JoinGame.class)
 		
 	}	
+	
 	// This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
 	{
@@ -47,23 +48,19 @@ public class MainActivity extends Activity
 		
 		playerPicker.setView(DialogView); 
 		
-
-		
 		final NumberPicker numPlayers = (NumberPicker)DialogView.findViewById(R.id.numpick); 
 		numPlayers.setMinValue(4);
-		numPlayers.setMaxValue(20); 
+		numPlayers.setMaxValue(12); 
 		numPlayers.setWrapSelectorWheel(false);
         numPlayers.setValue(4);
+        numPlayers.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
       //  numPlayers.setDisplay(this);
 		//		final NumberPicker aNumberPicker = new NumberPicker()
 	//	final EditText input  = new EditText(this);
 		//alertDialogBuilder.setView(input);
 		
-		
-		
-			playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+		playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dInterface, int id) {
-
 				int numOfPlayers = numPlayers.getValue();
 				dInterface.dismiss(); // This might need to be after starting canvas writer
 				
@@ -83,7 +80,8 @@ public class MainActivity extends Activity
 				Toast.makeText(context, loadingMessage, duration).show();
 			}
 		});
-			playerPicker.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+		
+		playerPicker.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dInterface, int id) {
 				dInterface.cancel();
 			}
