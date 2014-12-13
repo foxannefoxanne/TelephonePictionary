@@ -58,7 +58,7 @@ public class CanvasDrawer extends Activity{
 	    startActivity(intent);
 	}
 
-	//do i want to change this to alert dialog? 
+	//change colors
 	public void changeColor(View view) {
 
 		//create dialog, disable standard android title
@@ -184,9 +184,12 @@ public class CanvasDrawer extends Activity{
 	
 		//build alert dialog.
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-		 saveDialog.setTitle("Save Image?");
-		 
-		 //yes option
+		 LayoutInflater inflater = this.getLayoutInflater();
+		 View DialogView = inflater.inflate(R.layout.save_dialog, null);
+		 saveDialog.setView(DialogView); 
+
+			
+		 //user chooses to save
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
 				 
@@ -231,8 +234,11 @@ public class CanvasDrawer extends Activity{
 	
 		//build alert dialog
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
-		
-		resetDialog.setTitle("Clear Image?");
+		 LayoutInflater inflater = this.getLayoutInflater();
+		 View DialogView = inflater.inflate(R.layout.clr_dialog, null);
+		 resetDialog.setView(DialogView); 
+		 
+		//user opts to clear, drawCanvas is empty
 		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				drawTool.startNew(); 
@@ -253,6 +259,7 @@ public class CanvasDrawer extends Activity{
 		drawTool.setErase(true);
 	}
 
+	
 	public void submitImage(View view) {
 		
 		drawTool.setDrawingCacheEnabled(true);
