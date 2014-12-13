@@ -66,7 +66,7 @@
 		     android:id="@+id/writingeditor"
 		     android:layout_width="fill_parent"
 		     android:layout_height="0dp"
-		     android:layout_marginBottom="3dp"
+		     android:layout_marginBottom="82dp"
 		     android:layout_marginLeft="5dp"
 		     android:layout_marginRight="5dp"
 		     android:layout_marginTop="3dp"
@@ -75,7 +75,8 @@
 		     android:gravity="center"
 		     android:inputType="textMultiLine|textNoSuggestions"
 		     android:padding="5dip"
-		     android:textSize="40sp" >
+		     android:textSize="40sp"
+		      >
 
      </EditText>
     		<LinearLayout

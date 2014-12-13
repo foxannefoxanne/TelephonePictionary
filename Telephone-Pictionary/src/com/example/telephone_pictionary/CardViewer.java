@@ -31,6 +31,9 @@ public class CardViewer extends Activity {
 		if(model.getLastCard().getType() == Card.Type.TEXT){
 			ImageButton hideGuess = (ImageButton)findViewById(R.id.toGuess);
 			hideGuess.setVisibility(View.GONE); 
+			
+			ImageButton hideSave = (ImageButton)findViewById(R.id.save_button);
+			hideSave.setVisibility(View.GONE); 
 		}
 		else{
 				ImageButton hideDraw = (ImageButton)findViewById(R.id.toDraw);

@@ -238,6 +238,8 @@ public class CanvasDrawer extends Activity{
 				dialog.dismiss(); 
 			}
 		}); 
+		
+		//close dialog
 		resetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.cancel();
