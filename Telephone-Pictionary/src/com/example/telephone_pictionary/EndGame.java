@@ -1,11 +1,13 @@
 package com.example.telephone_pictionary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 
 public class EndGame extends FragmentActivity {
 	private ViewPager m_pager;
@@ -43,4 +45,12 @@ public class EndGame extends FragmentActivity {
 			return CardFragment.newInstance(position);
 		}
 	}
+	
+	// to instructions page. 
+	public void toInstructions(View view) {
+		Intent intent = new Intent(this, Explanation.class);
+	    startActivity(intent);
+	}
+
+	
 }

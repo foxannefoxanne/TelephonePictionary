@@ -28,7 +28,7 @@
     	    android:layout_marginTop="2dp"
     	    android:background="@drawable/questionmark"
     	    android:layout_alignParentRight="true"
-    	    android:onClick="gameDirections" />
+    	    android:onClick="toInstructions" />
 	</RelativeLayout>
     
   <RelativeLayout

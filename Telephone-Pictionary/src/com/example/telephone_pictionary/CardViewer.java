@@ -99,4 +99,11 @@ public class CardViewer extends Activity {
 
 	}
 	
+	// to instructions page. 
+	public void toInstructions(View view) {
+		Intent intent = new Intent(this, Explanation.class);
+	    startActivity(intent);
+	}
+
+	
 }

@@ -37,11 +37,13 @@ public class CanvasDrawer extends Activity{
 		lBrush = getResources().getInteger(R.integer.large);
 		xlBrush = getResources().getInteger(R.integer.xlarge); 
 		
+		//keep track of drawing
 		drawTool.setDrawingCacheEnabled(true);
 
 
 	}
 	
+	//return to card view
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
