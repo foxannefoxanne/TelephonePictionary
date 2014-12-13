@@ -46,7 +46,7 @@ public class CanvasDrawer extends Activity{
 	//return to card view
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		startActivity(intent);
 	}
 	
@@ -264,6 +264,7 @@ public class CanvasDrawer extends Activity{
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
+			this.setResult(RESULT_OK);
 			finish();
    	    }
    	    

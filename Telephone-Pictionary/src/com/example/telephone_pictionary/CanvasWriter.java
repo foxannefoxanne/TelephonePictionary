@@ -20,22 +20,22 @@ import android.widget.Toast;
 public class CanvasWriter extends Activity {
 	private EditText eText;
 	private Canvas writingCanvas;
-	private Bitmap writingBitmap; 
-	
+	private Bitmap writingBitmap;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canvas_writer);
-	
+
 		eText = (EditText) findViewById(R.id.writingeditor);
-		writingBitmap = Bitmap.createBitmap(50,50, Bitmap.Config.ARGB_8888);
+		writingBitmap = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
 		writingCanvas = new Canvas(writingBitmap);
-		
+
 		Model mod = Model.getInstance();
 
 		if (mod.getTurn() == 1) {
-			ImageButton hideBack = (ImageButton)findViewById(R.id.back_button);
-			hideBack.setVisibility(View.GONE); 
+			ImageButton hideBack = (ImageButton) findViewById(R.id.back_button);
+			hideBack.setVisibility(View.GONE);
 		}
 	}
 
@@ -48,49 +48,50 @@ public class CanvasWriter extends Activity {
 	
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		startActivity(intent);
 	}
 
 	public void submitImage(View view) {
-		
-		//convert edit text to bitmap
+
+		// convert edit text to bitmap
 		eText.setCursorVisible(false);
 		eText.clearComposingText();
 		eText.setDrawingCacheEnabled(true);
-		eText.buildDrawingCache(); 
-   	    Bitmap bitmap = eText.getDrawingCache();
- 
-   	    //call model, store card. 
-   	    Model model = Model.getInstance();
-   	    Card cardStorage = new Card(bitmap,Card.Type.TEXT); 
+		eText.buildDrawingCache();
+		Bitmap bitmap = eText.getDrawingCache();
 
-	    if (model.saveCard(cardStorage)) {
-	    	// end game
-	    	Intent intent = new Intent();
-	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
-	    	startActivity(intent);
-	    	
+		// call model, store card.
+		Model model = Model.getInstance();
+		Card cardStorage = new Card(bitmap, Card.Type.TEXT);
+
+		if (model.saveCard(cardStorage)) {
+			// end game
+			Intent intent = new Intent();
+			intent.setClassName("com.example.telephone_pictionary",
+					"com.example.telephone_pictionary.EndGame");
+			startActivity(intent);
+
 			Context context = getApplicationContext();
 			CharSequence loadingMessage = "End of Game\nSwipe ->";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
-			
+
 			finish();
-	    }
-	    else {
-	    	// go to card viewer
-   	    	Intent intent = new Intent();
-			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
+		} else {
+			// go to card viewer
+			Intent intent = new Intent();
+			intent.setClassName("com.example.telephone_pictionary",
+					"com.example.telephone_pictionary.CardViewer");
 			startActivity(intent);
-			
+
 			Context context = getApplicationContext();
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
-			
+			this.setResult(RESULT_OK);
 			finish();
-	    }
+		}
 
 	}
 }

@@ -52,6 +52,10 @@
             android:name=".CardFragment"
             android:label="@string/title_activity_card_fragment" >
         </activity>
+        <activity
+            android:name=".HostGame"
+            android:label="@string/title_activity_host_game" >
+        </activity>
     </application>
 
 </manifest>

@@ -26,7 +26,8 @@
     <string name="title_activity_canvas_writer">CanvasWriter</string>
     <string name="title_activity_card_viewer">CardViewer</string>
     <string name="title_activity_end_game">EndGame</string>
-	<string name="about_game">About The Game</string>
+    <string name="about_game">About The Game</string>
     <string name="title_activity_card_fragment">CardFragment</string>
+    <string name="title_activity_host_game">HostGame</string>
 
 </resources>

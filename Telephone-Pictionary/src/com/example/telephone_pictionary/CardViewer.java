@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 public class CardViewer extends Activity {
+	
+	public static final int CANVAS_REQUEST = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +44,23 @@ public class CardViewer extends Activity {
 		Model model = Model.getInstance();
 		if (model.getLastCard().getType() == Card.Type.TEXT) {
 			Intent intent = new Intent(this, CanvasDrawer.class);
-			startActivity(intent);
-			finish();
+			intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			startActivityForResult(intent, CANVAS_REQUEST);
 		}
 		else {
 			Intent intent = new Intent(this, CanvasWriter.class);
-			startActivity(intent);
-			finish();
+			intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			startActivityForResult(intent, CANVAS_REQUEST);
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data)
+	{
+		if (requestCode == CANVAS_REQUEST) {
+			if (resultCode == RESULT_OK) {
+				finish();
+			}
 		}
 	}
 	
