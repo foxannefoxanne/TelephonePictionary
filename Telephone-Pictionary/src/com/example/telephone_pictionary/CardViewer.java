@@ -12,6 +12,7 @@ import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -24,7 +25,17 @@ public class CardViewer extends Activity {
 		
 		Model model = Model.getInstance();
 		viewPreviousCard(model.getLastCard().getImage());
+		
+		if(model.getLastCard().getType() == Card.Type.TEXT){
+			ImageButton hideGuess = (ImageButton)findViewById(R.id.toGuess);
+			hideGuess.setVisibility(View.GONE); 
+		}
+		else{
+				ImageButton hideDraw = (ImageButton)findViewById(R.id.toDraw);
+				hideDraw.setVisibility(View.GONE); 
+			}
 	}
+	
 	
 	public void toCanvas(View view) {
 		// take viewer to appropriate canvas
