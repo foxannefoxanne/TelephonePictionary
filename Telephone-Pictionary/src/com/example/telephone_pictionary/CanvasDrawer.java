@@ -56,9 +56,9 @@ public class CanvasDrawer extends Activity{
 	    startActivity(intent);
 	}
 
+	//do i want to change this to alert dialog? 
 	public void changeColor(View view) {
 		final Dialog colorChooser = new Dialog(this);
-	//	colorChooser.setTitle("Color:");
 	    colorChooser.setContentView(R.layout.color_picker); 
 	    
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
@@ -114,6 +114,7 @@ public class CanvasDrawer extends Activity{
 		color20.setOnClickListener(listener);
 	}
 	
+	//alert dialog? 
 	public void changeBrushSize(View view) {
 	    final Dialog brushChooser = new Dialog(this); 
 		brushChooser.setTitle("Brush size:");
@@ -171,19 +172,26 @@ public class CanvasDrawer extends Activity{
 		
 	}	
 	
-	// NEEDS HELP. 
 	// function to save images
 	public void savetoDevice(View view) {
 	
-		
+		//build alert dialog.
 		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		 saveDialog.setTitle("Save Image?");
+		 
+		 //yes option
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
+				 
+				 //get drawing cache
 				 drawTool.setDrawingCacheEnabled(true);
 				 Bitmap bitmap = drawTool.getDrawingCache();
+				 
+				 //find path to save
 				 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
 				 File file = new File(path+"/image.png");
+				
+				 //attempt to save image
 				 FileOutputStream ostream;
 				 try {
 					 file.createNewFile();
@@ -200,6 +208,8 @@ public class CanvasDrawer extends Activity{
 				 drawTool.destroyDrawingCache();
 			 }
 		 });
+		 
+		 //no option, dialog exits.
 		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
 				 dialog.cancel();
@@ -211,6 +221,7 @@ public class CanvasDrawer extends Activity{
 
 	// clear image
 	public void clearImage(View view) {
+		//build alert dialog
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
 		resetDialog.setTitle("Clear Image?");
 		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -227,7 +238,8 @@ public class CanvasDrawer extends Activity{
 		
 		resetDialog.show(); 
 	}
-		
+	
+	//sets draw color to white 
 	public void eraseImage(View view) {
 		drawTool.setErase(true);
 	}
