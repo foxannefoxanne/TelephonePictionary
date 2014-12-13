@@ -93,7 +93,6 @@ public class CanvasDrawer extends Activity{
 	    //on click. if color is selected, changes in draw tools and closes dialog
 	    OnClickListener listener = new OnClickListener() {
 		public void onClick(View v) {	
-			drawTool.setErase(false); 
 			String color = v.getTag().toString();
 			drawTool.setColor(color);
 			colorChooser.dismiss(); 
@@ -129,7 +128,6 @@ public class CanvasDrawer extends Activity{
 	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    brushChooser.setContentView(R.layout.brush_picker);
 		
-	    drawTool.setErase(false); 
 	    
 	    //initiate all buttons
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
@@ -145,23 +143,18 @@ public class CanvasDrawer extends Activity{
 				 {
 				 	case R.id.xs_brush:
 				 		drawTool.setBrushSize(xsBrush);
-						drawTool.setLastBrushSize(xsBrush); 
 						break; 
 				 	case R.id.s_brush:
 				 		drawTool.setBrushSize(sBrush);
-						drawTool.setLastBrushSize(sBrush); 
 						break; 
 				 	case R.id.m_brush:
 				 		drawTool.setBrushSize(mBrush);
-						drawTool.setLastBrushSize(mBrush); 
 						break; 
 				 	case R.id.l_brush:
 				 		drawTool.setBrushSize(lBrush);
-						drawTool.setLastBrushSize(lBrush); 
 						break; 
 				 	case R.id.xl_brush:
 				 		drawTool.setBrushSize(xlBrush);
-						drawTool.setLastBrushSize(xlBrush); 
 						break; 
 				 }
 				 	brushChooser.dismiss();
@@ -256,7 +249,7 @@ public class CanvasDrawer extends Activity{
 	
 	//sets draw color to white 
 	public void eraseImage(View view) {
-		drawTool.setErase(true);
+		drawTool.setErase();
 	}
 
 	

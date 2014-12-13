@@ -21,8 +21,7 @@ public class DrawingTools extends View {
 	private int paintColor;
 	private Canvas drawingCanvas;
 	private Bitmap drawingBitmap; 
-	private float brushSize, lastBrushSize;
-	private boolean erase = false; 
+	private float brushSize;
 	
 	public DrawingTools(Context context, AttributeSet attrs){
 		super(context, attrs);
@@ -30,33 +29,33 @@ public class DrawingTools extends View {
 	}
 	
 	private void setUpDrawingTools(){
+		//set up path, paint
 		drawPath = new Path();
 		drawPaint = new Paint();
 		
+		//set paint color to black, width to 20
 		String colorName = "#000000";
 		paintColor = Color.parseColor(colorName);
-
 		drawPaint.setColor(paintColor);
 		drawPaint.setStrokeWidth(20);
 		
+		//make paint brush "smooth" and round brush. 
 		drawPaint.setAntiAlias(true);
 		drawPaint.setStyle(Paint.Style.STROKE);
 		drawPaint.setStrokeJoin(Paint.Join.ROUND);
 		drawPaint.setStrokeCap(Paint.Cap.ROUND);
 		
-		// Eclipe describes dither_flag as:
+		// Eclipse describes dither_flag as:
 		//"Paint flag that enables dithering when blitting."
 		canvasPaint = new Paint(Paint.DITHER_FLAG);
 		
 		brushSize = getResources().getInteger(R.integer.med);
-		lastBrushSize = brushSize;
 	
 		drawPaint.setStrokeWidth(brushSize);
 	}
 	
 	@Override
 	protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
-		
 		super.onSizeChanged(width, height, oldWidth, oldHeight);
 		drawingBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
 		drawingCanvas = new Canvas(drawingBitmap);
@@ -64,11 +63,11 @@ public class DrawingTools extends View {
 	
 	@Override
 	protected void onDraw(Canvas canvas) {
-		
 		canvas.drawBitmap(drawingBitmap, 0, 0, canvasPaint);
 		canvas.drawPath(drawPath, drawPaint);
 	}
 	
+	//detects touch of user on screen
 	@Override
 	public boolean onTouchEvent(MotionEvent event)
 	{
@@ -94,42 +93,30 @@ public class DrawingTools extends View {
 		return true; 
 	}
 	
+	//erases all that is on canvas, starts new
 	public void startNew() {
 		drawingCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
-		invalidate(); 
-	
-
+		invalidate();
 	}
 	
+	//clears old paint color, starts with new
 	public void setColor(String color) {
 		invalidate(); 
 		paintColor = Color.parseColor(color);
 		drawPaint.setColor(paintColor);  
 	}
 	
+	//reset brush size
 	public void setBrushSize(float newSize) {
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
 		brushSize = pixelAmount; 
 		drawPaint.setStrokeWidth(brushSize); 
 	}
 	
-	public void setLastBrushSize(float lastSize) {
-		lastBrushSize = lastSize; 
-	}
-	
-	public float getLastBrushSize() {
-		return lastBrushSize; 
-	}
-	
-	public void setErase(boolean isErase) {
-		erase = isErase; 
-		
-		if(erase){
-				//drawPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
-				this.setColor("#FFFFFFFF");
-		}
-		else
-			 drawPaint.setXfermode(null);
+	//set erase (brush color to white)
+	public void setErase() {
+
+		this.setColor("#FFFFFFFF");
 	}
 	
 }

@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 public class CanvasWriter extends Activity {
 	private EditText eText;
-	private Canvas writingCanvas;
 	private Bitmap writingBitmap;
 
 	@Override
@@ -27,10 +26,11 @@ public class CanvasWriter extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canvas_writer);
 
+		//starts text editor, bitmap, and canvas
 		eText = (EditText) findViewById(R.id.writingeditor);
 		writingBitmap = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
-		writingCanvas = new Canvas(writingBitmap);
 
+		//if turn one, hides back button
 		Model mod = Model.getInstance();
 
 		if (mod.getTurn() == 1) {
@@ -46,12 +46,14 @@ public class CanvasWriter extends Activity {
 	}
 
 	
+	//to previous card
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		startActivity(intent);
 	}
 
+	
 	public void submitImage(View view) {
 
 		// convert edit text to bitmap
