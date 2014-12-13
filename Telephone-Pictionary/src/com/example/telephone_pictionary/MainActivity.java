@@ -31,11 +31,17 @@ public class MainActivity extends Activity
 	    startActivity(intent);
 	}
 	
+	public void hostGame(View view)
+	{
+		Intent intent = new Intent(this, HostGame.class);
+		startActivity(intent);
+	}
+	
 	// This is what happens when Join Game button is pushed.
 	public void joinGame(View view)
 	{
-		// Intent intent = new Intent(this, JoinGame.class)
-		
+		Intent intent = new Intent(this, JoinGame.class);
+		startActivity(intent);	
 	}	
 	
 	// This is what happens when Pass and Play button is pushed.
@@ -54,10 +60,6 @@ public class MainActivity extends Activity
 		numPlayers.setWrapSelectorWheel(false);
         numPlayers.setValue(4);
         numPlayers.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
-      //  numPlayers.setDisplay(this);
-		//		final NumberPicker aNumberPicker = new NumberPicker()
-	//	final EditText input  = new EditText(this);
-		//alertDialogBuilder.setView(input);
 		
 		playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dInterface, int id) {

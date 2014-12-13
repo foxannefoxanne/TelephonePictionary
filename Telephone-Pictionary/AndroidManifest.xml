@@ -56,6 +56,10 @@
             android:name=".HostGame"
             android:label="@string/title_activity_host_game" >
         </activity>
+        <activity
+            android:name=".JoinGame"
+            android:label="@string/title_activity_join_game" >
+        </activity>
     </application>
 
 </manifest>

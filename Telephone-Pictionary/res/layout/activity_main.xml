@@ -27,7 +27,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@drawable/hostgame"
-        android:onClick="newGame"/> 
+        android:onClick="hostGame"/> 
         
     
     <ImageButton

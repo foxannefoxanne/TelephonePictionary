@@ -29,5 +29,6 @@
     <string name="about_game">About The Game</string>
     <string name="title_activity_card_fragment">CardFragment</string>
     <string name="title_activity_host_game">HostGame</string>
+    <string name="title_activity_join_game">JoinGame</string>
 
 </resources>
