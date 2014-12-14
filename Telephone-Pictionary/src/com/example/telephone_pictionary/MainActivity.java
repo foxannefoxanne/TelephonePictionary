@@ -34,18 +34,18 @@ public class MainActivity extends Activity
 	
 	//remove these? 
 	
-//	public void hostGame(View view)
-	//{
-	//	Intent intent = new Intent(this, HostGame.class);
-		//startActivity(intent);
-	//}
+	public void hostGame(View view)
+	{
+		Intent intent = new Intent(this, HostGame.class);
+		startActivity(intent);
+	}
 	
 	// This is what happens when Join Game button is pushed.
-//	public void joinGame(View view)
-//	{
-		//Intent intent = new Intent(this, JoinGame.class);
-		//startActivity(intent);	
-	//}	
+	public void joinGame(View view)
+	{
+		Intent intent = new Intent(this, JoinGame.class);
+		startActivity(intent);	
+	}	
 	
 	// This is what happens when Pass and Play button is pushed.
 	public void passAndPlay(View view)
