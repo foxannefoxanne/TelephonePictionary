@@ -1,64 +1,66 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:orientation="vertical"
-     android:background="#3E818A" >
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop = "16dp"
-    android:paddingBottom = "16dp"
-    android:layout_marginRight = "10dp"
-    android:layout_marginTop = "10dp"
-    android:layout_marginLeft = "10dp"  
-    android:layout_marginBottom = "10dp"
-    android:orientation="vertical"
-    android:background="#98BAC3" >
-    
-        
-    <TextView
-        android:id="@+id/TelephonePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-         android:layout_marginRight = "7dp"
-        android:layout_marginLeft = "7dp"
-        android:text="@string/about_game"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:paddingLeft="16dp"
+	    android:paddingRight="16dp"
+	    android:orientation="vertical"
+	     android:background="#3E818A" >
+	
+	    <LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:paddingLeft="16dp"
+	    android:paddingRight="16dp"
+	    android:paddingTop = "16dp"
+	    android:paddingBottom = "16dp"
+	    android:layout_marginRight = "10dp"
+	    android:layout_marginTop = "10dp"
+	    android:layout_marginLeft = "10dp"  
+	    android:layout_marginBottom = "10dp"
+	    android:orientation="vertical"
+	    android:background="#98BAC3" >
+	    
+	        
+	    <TextView
+	        android:id="@+id/TelephonePic"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	         android:layout_marginRight = "7dp"
+	        android:layout_marginLeft = "7dp"
+	        android:text="@string/about_game"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <TextView
+	        android:id="@+id/Description"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	     
+	        android:layout_marginRight = "7dp"
+	        android:layout_marginLeft = "7dp"
+	        android:text="@string/normal_instr"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	    <TextView
+	        android:id="@+id/HowToUse"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:layout_marginRight = "7dp"
+	        android:layout_marginLeft = "7dp"
+	        android:text="@string/pass_play"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <TextView
+	        android:id="@+id/Instructions"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content" 
+	        android:layout_marginRight = "7dp"
+	        android:layout_marginLeft = "7dp"
+	        android:text="@string/pass_play_instr"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	
+	  </LinearLayout>
+	    
+	        
 
-    <TextView
-        android:id="@+id/Description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-     
-        android:layout_marginRight = "7dp"
-        android:layout_marginLeft = "7dp"
-        android:text="The normal version can be explained here."
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/HowToUse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginRight = "7dp"
-        android:layout_marginLeft = "7dp"
-        android:text="@string/pass_play"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/Instructions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginRight = "7dp"
-        android:layout_marginLeft = "7dp"
-        android:text="@string/pass_play_instr"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-  </LinearLayout>
-    
-        
-</LinearLayout>
+</ScrollView>

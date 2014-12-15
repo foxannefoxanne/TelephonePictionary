@@ -4,9 +4,9 @@
     <string name="app_name">Telephonery</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="normal_instr"></string>
+    <string name="normal_instr">Telephonary is based off a combination of two popular games: Telephone and Pictionary. In Telephonary the first player writes doen a phrase and passes to the next player, who will look at the phrase and attempt to draw the phrase. That player will then pass to the next plaery, who only looking at the drawing will attempt to guess the original phrase. This will continue, alternating between drawing a picture from the phrase and writing a phrase from the picture.Enjoy the confustion!</string>
     <string name="pass_play">Pass And Play Version</string>
-    <string name="pass_play_instr">Start the new game using the Start Game button. Select how many players. The first player will type a phrase on a Card then select the Pass button. The player will then pass the device onto the next player. This player will then draw a picture depicting the phrase and pass it on. Play will continue alternating between the player typing a phrase from the picture and the player drawing a picture from a phrase until all the device has traveled to all players.</string>
+    <string name="pass_play_instr">Start the new game using the Pass and Play button. Select how many players. The first player will type a phrase on a Card then select the Pass button. The player will then pass the device onto the next player. This player will then draw a picture depicting the phrase and pass it on. Play will continue alternating between the player typing a phrase from the picture and the player drawing a picture from a phrase until all the device has traveled to all players.</string>
     <string name="numPlayers">Enter the number of players</string>
     <string name="title_activity_explanation">Explanation</string>
     <string name="title_activity_connect">Connections</string>
