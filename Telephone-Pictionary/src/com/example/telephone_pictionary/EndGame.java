@@ -51,6 +51,10 @@ public class EndGame extends FragmentActivity {
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);
 	}
+	
+	public void toMain(View view) {
+		finish();
+	}
 
 	
 }

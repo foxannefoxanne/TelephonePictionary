@@ -275,6 +275,7 @@ public class CanvasDrawer extends Activity{
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
 			
+			this.setResult(RESULT_OK);
 			finish();
    	    }
    	    else {

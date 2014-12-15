@@ -26,11 +26,11 @@ public class CanvasWriter extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canvas_writer);
 
-		//starts text editor, bitmap, and canvas
+		// starts text editor, bitmap, and canvas
 		eText = (EditText) findViewById(R.id.writingeditor);
 		writingBitmap = Bitmap.createBitmap(50, 50, Bitmap.Config.ARGB_8888);
 
-		//if turn one, hides back button
+		// if turn one, hides back button
 		Model mod = Model.getInstance();
 
 		if (mod.getTurn() == 1) {
@@ -46,7 +46,7 @@ public class CanvasWriter extends Activity {
 	}
 
 	
-	//to previous card
+	// to previous card
 	public void toCardView(View view) {
 		Intent intent = new Intent(this, CardViewer.class);
 		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -79,8 +79,11 @@ public class CanvasWriter extends Activity {
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
 
+			// tell card viewer to end
+			this.setResult(RESULT_OK);
 			finish();
-		} else {
+		} 
+		else {
 			// go to card viewer
 			Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary",
@@ -91,6 +94,8 @@ public class CanvasWriter extends Activity {
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
+			
+			// tell card viewer to end
 			this.setResult(RESULT_OK);
 			finish();
 		}
