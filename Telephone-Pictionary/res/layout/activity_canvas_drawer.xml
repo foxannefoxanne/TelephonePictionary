@@ -21,13 +21,13 @@
      	   android:src="@drawable/draw"
        	   android:layout_margin="3dp" />
  
- 		 	   <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp" 
-        android:layout_alignParentRight="true"
-        android:orientation="horizontal">
+ 		   <LinearLayout
+        	android:layout_width="wrap_content"
+        	android:layout_height="40dp"
+        	android:layout_gravity="center"
+        	android:layout_marginTop="5dp" 
+        	android:layout_alignParentRight="true"
+        	android:orientation="horizontal">
         
    		<ImageButton
     	    android:id="@+id/explanationbutton"
@@ -49,8 +49,8 @@
    		
 	</RelativeLayout>
     
-  <RelativeLayout
-       android:layout_width="wrap_content"
+  	<RelativeLayout
+      	 android:layout_width="wrap_content"
    		android:layout_height = "30dp"
    		android:layout_marginBottom="10dp" 
    		android:paddingRight = "5dp">
@@ -102,9 +102,8 @@
     		android:layout_weight="1"
     		android:background="#FFFFFFFF"
     		 />
-    	
- 
-    
+
+    	    
   <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="40dp"
@@ -113,14 +112,7 @@
         android:orientation="horizontal">
 
      
-         <ImageButton
-    		android:id="@+id/display_color"
-    		android:layout_width="@dimen/l_brush"
-   			android:layout_height="@dimen/l_brush"
-   			android:background="#000000"
-   			android:layout_gravity="center"
-   			android:contentDescription="@string/color"
-   			android:src="@drawable/color_display"/>
+      
   
         <ImageButton
            	android:id="@+id/color_button"
@@ -154,16 +146,6 @@
         android:layout_marginBottom="10dp" 
         android:orientation="horizontal">
 
-      <ImageButton
-          android:layout_width="@dimen/m_brush"
-          android:layout_height="@dimen/m_brush"
-          
-          android:background="#3E818A"
-          android:layout_gravity="center"
-          android:contentDescription="@string/med"
-          android:padding="2dp"
-          android:src="@drawable/brush_display" />
-           
         <ImageButton
             android:id="@+id/brush_button"
             android:layout_width="wrap_content"
@@ -185,5 +167,7 @@
         	android:layout_margin="10dp"/>
            
         </LinearLayout>
+    	  
+    
 
 </LinearLayout>

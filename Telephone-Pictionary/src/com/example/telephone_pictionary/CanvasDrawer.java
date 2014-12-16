@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -46,7 +47,7 @@ public class CanvasDrawer extends Activity{
 	
 	
 		colorSetter = false; 
-		brushSetter = true; 
+		brushSetter = false; 
 		
 		//keep track of drawing
 		drawTool.setDrawingCacheEnabled(true);
@@ -75,13 +76,7 @@ public class CanvasDrawer extends Activity{
 	    colorChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    colorChooser.setContentView(R.layout.color_picker); 
 	
-	    if(!colorSetter){
-	    	currentColor = (ImageButton)colorChooser.findViewById(R.id.color20); 
-	    	currentColor.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
-	    }
-	    else{
-	    	currentColor.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
-	    }
+	   
 	    
 	    //large, gross chunk of code. initializes each button to a color
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
@@ -104,7 +99,54 @@ public class CanvasDrawer extends Activity{
 	    ImageButton color18 = (ImageButton)colorChooser.findViewById(R.id.color18);
 	    ImageButton color19 = (ImageButton)colorChooser.findViewById(R.id.color19);
 	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
-	
+	  
+	    if(!colorSetter){
+	    	color20.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    }
+	    else{
+	    	if(color1.getId() == drawTool.getColorButton().getId())
+	    		color1.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color2.getId() == drawTool.getColorButton().getId())
+	    		color2.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color3.getId() == drawTool.getColorButton().getId())
+	    		color3.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color4.getId() == drawTool.getColorButton().getId())
+	    		color4.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color4.getId() == drawTool.getColorButton().getId())
+	    		color4.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color5.getId() == drawTool.getColorButton().getId())
+	    		color5.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color6.getId() == drawTool.getColorButton().getId())
+	    		color6.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color7.getId() == drawTool.getColorButton().getId())
+	    		color7.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color8.getId() == drawTool.getColorButton().getId())
+	    		color8.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color9.getId() == drawTool.getColorButton().getId())
+	    		color9.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color10.getId() == drawTool.getColorButton().getId())
+	    		color10.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color11.getId() == drawTool.getColorButton().getId())
+	    		color11.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color12.getId() == drawTool.getColorButton().getId())
+	    		color12.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color13.getId() == drawTool.getColorButton().getId())
+	    		color13.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color14.getId() == drawTool.getColorButton().getId())
+	    		color14.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color15.getId() == drawTool.getColorButton().getId())
+	    		color15.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color16.getId() == drawTool.getColorButton().getId())
+	    		color16.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color17.getId() == drawTool.getColorButton().getId())
+	    		color17.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color18.getId() == drawTool.getColorButton().getId())
+	    		color18.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color19.getId() == drawTool.getColorButton().getId())
+	    		color19.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    	else if(color20.getId() == drawTool.getColorButton().getId())
+	    		color20.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    }
 
 	    //on click. if color is selected, changes in draw tools and closes dialog
 	    OnClickListener listener = new OnClickListener() {
@@ -112,8 +154,8 @@ public class CanvasDrawer extends Activity{
 			String color = v.getTag().toString();
 			colorSetter = true; 
 			currentColor = (ImageButton)colorChooser.findViewById(v.getId()); 
-			drawTool.setColor(color);
-			changeView(color); 
+			drawTool.setColor(color, (ImageButton)colorChooser.findViewById(v.getId()));
+			changeColorView(color); 
 			colorChooser.dismiss(); 
 		}};
 		colorChooser.show();
@@ -141,20 +183,50 @@ public class CanvasDrawer extends Activity{
 		color20.setOnClickListener(listener);
 	}
 	
-	public void changeView(String color){
-		ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
-		int paintColor = Color.parseColor(color);
-		colorChanger.setBackgroundColor(paintColor);
+	public void changeColorView(String color){
+		//ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
+	//	int paintColor = Color.parseColor(color);
+		//colorChanger.setBackgroundColor(paintColor);
 	}
+	
 	public void changeBrushSize(View view) {
 
 		final Dialog brushChooser = new Dialog(this); 
 	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    brushChooser.setContentView(R.layout.brush_picker);
 		
-		
 
-		
+	    if(!brushSetter){
+	    	currentSize = (ImageButton)brushChooser.findViewById(R.id.m_brush); 
+	    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
+	    }
+	    else{
+			if(drawTool.getBrushSize().equals("xsBrush")){
+			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.xs_brush); 
+			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.xsbrush_selected));}
+		    else if(drawTool.getBrushSize().equals("sBrush")){
+		    		currentSize = (ImageButton)brushChooser.findViewById(R.id.s_brush); 
+			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.sbrush_selected));}
+			 		//changeBrushView(sBrush); 
+					 
+		     else if(drawTool.getBrushSize().equals("mBrush")){
+			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.m_brush); 
+			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
+			 		//changeBrushView(mBrush); 
+		     }
+			 else if(drawTool.getBrushSize().equals("lBrush")){
+			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.l_brush); 
+			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.lbrush_selected));
+			 		//changeBrushView(lBrush); 
+			    }
+			 else if(drawTool.getBrushSize().equals("xlBrush")){
+			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.xl_brush); 
+			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.xlbrush_selected));
+			 		//changeBrushView(xlBrush); 
+			 }
+			 
+	    }
+
 	    
 	    //initiate all buttons
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
@@ -163,27 +235,30 @@ public class CanvasDrawer extends Activity{
 		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
 		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
 	
+
+	
 		//on click to change all brush sizes
 		 OnClickListener listener = new OnClickListener() {
 				public void onClick(View v) {	
 				 switch(v.getId())
 				 {
 				 	case R.id.xs_brush:
-				 		drawTool.setBrushSize(xsBrush);
+				 		drawTool.setBrushSize(xsBrush, "xsBrush");
 						break; 
 				 	case R.id.s_brush:
-				 		drawTool.setBrushSize(sBrush);
+				 		drawTool.setBrushSize(sBrush, "sBrush");
 						break; 
 				 	case R.id.m_brush:
-				 		drawTool.setBrushSize(mBrush);
-						break; 
+				 		drawTool.setBrushSize(mBrush, "mBrush");
+				 		break; 
 				 	case R.id.l_brush:
-				 		drawTool.setBrushSize(lBrush);
-						break; 
+				 		drawTool.setBrushSize(lBrush, "lBrush");
+										 		break; 
 				 	case R.id.xl_brush:
-				 		drawTool.setBrushSize(xlBrush);
-						break; 
+				 		drawTool.setBrushSize(xlBrush, "xlBrush");
+				 		break; 
 				 }
+				 	brushSetter = true; 
 				 	brushChooser.dismiss();
 				}};
 		  
@@ -198,6 +273,27 @@ public class CanvasDrawer extends Activity{
 		brushChooser.show();
 		
 	}	
+	
+//	public void changeBrushView(float brushSize){
+	//	ImageButton brushChanger = (ImageButton)findViewById(R.id.brush_view);
+		
+	//	if(xsBrush == brushSize){
+			//brushChanger.setImageResource(R.drawable.xsbrush_selected);
+		//}
+		//if(sBrush == brushSize){
+		//	brushChanger.setImageResource(R.drawable.sbrush_selected);
+		//}
+		//if(mBrush == brushSize){
+			//brushChanger.setImageResource(R.drawable.mbrush_selected);
+		//}
+		//if(lBrush == brushSize){
+		//	brushChanger.setImageResource(R.drawable.lbrush_selected);
+		//}
+	//	if(xlBrush == brushSize){
+		//	brushChanger.setImageResource(R.drawable.xlbrush_selected);
+		//}
+
+	//}
 	
 	// function to save images
 	public void savetoDevice(View view) {
@@ -274,10 +370,11 @@ public class CanvasDrawer extends Activity{
 		resetDialog.show(); 
 	}
 	
+	
 	//sets draw color to white 
 	public void eraseImage(View view) {
 		drawTool.setErase();
-		changeView("#FFFFFF");
+		changeColorView("#FFFFFF");
 	}
 
 	
