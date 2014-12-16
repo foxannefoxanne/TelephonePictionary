@@ -2,6 +2,8 @@ package com.example.telephone_pictionary;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,17 +31,17 @@ public class CardViewer extends Activity {
 		Model model = Model.getInstance();
 		viewPreviousCard(model.getLastCard().getImage());
 		
-		if(model.getLastCard().getType() == Card.Type.TEXT){
+		if(model.getLastCard().getType() == Card.Type.TEXT) {
 			ImageButton hideGuess = (ImageButton)findViewById(R.id.toGuess);
 			hideGuess.setVisibility(View.GONE); 
 			
 			ImageButton hideSave = (ImageButton)findViewById(R.id.save_button);
 			hideSave.setVisibility(View.GONE); 
 		}
-		else{
+		else {
 				ImageButton hideDraw = (ImageButton)findViewById(R.id.toDraw);
 				hideDraw.setVisibility(View.GONE); 
-			}
+		}
 	}
 	
 	
@@ -79,30 +82,29 @@ public class CardViewer extends Activity {
 		View content = findViewById(R.id.prevCard);
 	    content.setDrawingCacheEnabled(true);
 	    final Bitmap bitmap = content.getDrawingCache();
-
-	        
 		
 		AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-		 
 		
-		 saveDialog.setTitle("Save Image?");
-		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+		saveDialog.setTitle("Save Image?");
+		saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
-				 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-				 File file = new File(path+"/image.png");
-				 FileOutputStream ostream;
-				 try {
-					 file.createNewFile();
-					 ostream = new FileOutputStream(file);
-					 bitmap.compress(CompressFormat.PNG, 100, ostream);
-					 ostream.flush();
-					 ostream.close();
-					 Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-				} catch (Exception e) {
+				// create new time-stamped file name
+				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
+				FileOutputStream ostream;
+				try {
+					file.createNewFile();
+					ostream = new FileOutputStream(file);
+					bitmap.compress(CompressFormat.PNG, 100, ostream);
+					ostream.flush();
+					ostream.close();
+					Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
+			 	} 
+				catch (Exception e) {
 					e.printStackTrace();
 					Toast.makeText(getApplicationContext(), "Error", 5000).show();
 				}
-
 			 }
 		 });
 		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -114,7 +116,7 @@ public class CardViewer extends Activity {
 
 	}
 	
-	// to instructions page. 
+	// to instructions page 
 	public void toInstructions(View view) {
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);

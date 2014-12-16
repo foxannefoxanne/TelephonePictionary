@@ -1,13 +1,24 @@
 package com.example.telephone_pictionary;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.Toast;
 
 public class EndGame extends FragmentActivity {
 	private ViewPager m_pager;
@@ -46,7 +57,51 @@ public class EndGame extends FragmentActivity {
 		}
 	}
 	
-	// to instructions page. 
+	public void saveToDevice(View view) {
+
+		AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+
+		saveDialog.setTitle("Save All Images?");
+		saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				Model model = Model.getInstance();
+				for (int i = 0; i < model.getNumUsers(); ++i) {
+					boolean error = false;
+					Bitmap bitmap = model.getCard(i).getImage();
+					// create new time-stamped file name
+					String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+					String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+				    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
+					FileOutputStream ostream;
+					try {
+						file.createNewFile();
+						ostream = new FileOutputStream(file);
+						bitmap.compress(CompressFormat.PNG, 100, ostream);
+						ostream.flush();
+						ostream.close();
+					} 
+					catch (Exception e) {
+						e.printStackTrace();
+						error = true;
+					}
+					if (error) {
+						Toast.makeText(getApplicationContext(), "Error", 5000).show();
+					}
+					else {
+						Toast.makeText(getApplicationContext(), "Images saved", 5000).show();
+					}
+				}
+			}
+		});
+		saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		saveDialog.show(); 
+	}
+	
+	// to instructions page 
 	public void toInstructions(View view) {
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);

@@ -11,6 +11,8 @@ import android.widget.ImageButton;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -181,32 +183,31 @@ public class CanvasDrawer extends Activity{
 		 View DialogView = inflater.inflate(R.layout.save_dialog, null);
 		 saveDialog.setView(DialogView); 
 
-			
 		 //user chooses to save
 		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
 			 public void onClick(DialogInterface dialog, int which) {
+				//get drawing cache
+				drawTool.setDrawingCacheEnabled(true);
+				Bitmap bitmap = drawTool.getDrawingCache();
 				 
-				 //get drawing cache
-				 drawTool.setDrawingCacheEnabled(true);
-				 Bitmap bitmap = drawTool.getDrawingCache();
-				 
-				 //find path to save
-				 String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-				 File file = new File(path+"/image.png");
+				// create new time-stamped file name
+				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
 				
 				 //attempt to save image
-				 FileOutputStream ostream;
-				 try {
-					 file.createNewFile();
-					 ostream = new FileOutputStream(file);
-					 bitmap.compress(CompressFormat.PNG, 100, ostream);
-					 ostream.flush();
-					 ostream.close();
-					 Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-				} catch (Exception e) {
-					e.printStackTrace();
-					Toast.makeText(getApplicationContext(), "Error", 5000).show();
-				}
+			    FileOutputStream ostream;
+			    try {
+			    	file.createNewFile();
+			    	ostream = new FileOutputStream(file);
+			    	bitmap.compress(CompressFormat.PNG, 100, ostream);
+			    	ostream.flush();
+			    	ostream.close();
+			    	Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
+			    } catch (Exception e) {
+			    	e.printStackTrace();
+			    	Toast.makeText(getApplicationContext(), "Error", 5000).show();
+			    }
 
 				 drawTool.destroyDrawingCache();
 			 }
@@ -219,7 +220,6 @@ public class CanvasDrawer extends Activity{
 			 }
 		 });
 		saveDialog.show(); 
-
 	}
 
 	// clear image
@@ -227,9 +227,9 @@ public class CanvasDrawer extends Activity{
 	
 		//build alert dialog
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
-		 LayoutInflater inflater = this.getLayoutInflater();
-		 View DialogView = inflater.inflate(R.layout.clr_dialog, null);
-		 resetDialog.setView(DialogView); 
+		LayoutInflater inflater = this.getLayoutInflater();
+		View DialogView = inflater.inflate(R.layout.clr_dialog, null);
+		resetDialog.setView(DialogView); 
 		 
 		//user opts to clear, drawCanvas is empty
 		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

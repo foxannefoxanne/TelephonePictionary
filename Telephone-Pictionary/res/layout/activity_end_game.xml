@@ -62,7 +62,7 @@
             android:layout_height="fill_parent"
             android:contentDescription="@string/save"
             android:layout_alignParentLeft="true"		
-            android:onClick="savetoDevice"   
+            android:onClick="saveToDevice"   
             android:background = "@null"
             android:src="@drawable/save" />
   
