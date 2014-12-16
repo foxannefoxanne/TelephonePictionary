@@ -26,6 +26,7 @@ public class CanvasDrawer extends Activity
 	private float xsBrush, sBrush, mBrush, lBrush, xlBrush;
 	private ImageButton currentSize; 
 	private boolean colorSetter, brushSetter;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{

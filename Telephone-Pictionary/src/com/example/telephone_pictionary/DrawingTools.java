@@ -121,7 +121,7 @@ public class DrawingTools extends View
 		drawPaint.setColor(paintColor);  
 	}
 
-	//reset brush size
+	// reset brush size
 	public void setBrushSize(float newSize, String sizeName) 
 	{
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
@@ -135,7 +135,8 @@ public class DrawingTools extends View
 	{
 		return brushName; 
 	}
-	//set erase (brush color to white)
+	
+	// set erase (brush color to white)
 	public void setErase() 
 	{
 

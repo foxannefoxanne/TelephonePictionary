@@ -13,7 +13,6 @@ import android.widget.NumberPicker;
 import android.widget.NumberPicker.OnValueChangeListener;
 import android.widget.Toast;
 
-
 public class MainActivity extends Activity 
 {
 	@Override
@@ -23,7 +22,7 @@ public class MainActivity extends Activity
 		setContentView(R.layout.activity_main);
 	}
 	
-	public void gameDirections(View view) 
+	public void toInstructions(View view) 
 	{
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);

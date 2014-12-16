@@ -60,6 +60,6 @@
         android:layout_marginBottom="19dp"
         android:layout_marginRight="18dp"
         android:background="@drawable/questionmark"
-        android:onClick="gameDirections"  />
+        android:onClick="toInstructions"  />
      
 </RelativeLayout>
