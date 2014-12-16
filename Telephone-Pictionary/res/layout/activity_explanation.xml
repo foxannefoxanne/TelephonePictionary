@@ -20,46 +20,56 @@
 	    android:layout_marginBottom = "10dp"
 	    android:orientation="vertical"
 	    android:background="#98BAC3" >
-    
+ 
+    <ImageButton
+ 		android:id="@+id/exit"
+	    android:layout_width="34dp"
+ 	    android:layout_height="34dp"
+ 	    android:layout_marginTop="4dp"
+ 	    android:background="@drawable/xsymbol"
+ 	    android:gravity="end"
+ 	    android:onClick="close"/>
         
     <TextView
         android:id="@+id/TelephonePic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
+        android:gravity="center"
         android:text="@string/about_game"
         android:textSize="42sp" />
 
     <TextView
         android:id="@+id/Description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"	     
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"	     
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
+        android:gravity="center"
         android:text="@string/normal_instr"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/HowToUse"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
+        android:gravity="center"
         android:text="@string/pass_play"
         android:textSize="42sp" />
 
     <TextView
         android:id="@+id/Instructions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
+        android:gravity="center"
         android:text="@string/pass_play_instr"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
   </LinearLayout>
-	    
 	        
-
 </ScrollView>

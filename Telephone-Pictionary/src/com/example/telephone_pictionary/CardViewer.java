@@ -13,49 +13,59 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.format.Time;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class CardViewer extends Activity {
-	
+public class CardViewer extends Activity 
+{
 	public static final int CANVAS_REQUEST = 1;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_card_viewer);
 		
 		Model model = Model.getInstance();
 		viewPreviousCard(model.getLastCard().getImage());
 		
-		if(model.getLastCard().getType() == Card.Type.TEXT) {
+		if(model.getLastCard().getType() == Card.Type.TEXT) 
+		{
 			ImageButton hideGuess = (ImageButton)findViewById(R.id.toGuess);
 			hideGuess.setVisibility(View.GONE); 
 			
 			ImageButton hideSave = (ImageButton)findViewById(R.id.save_button);
 			hideSave.setVisibility(View.GONE); 
 		}
-		else {
-				ImageButton hideDraw = (ImageButton)findViewById(R.id.toDraw);
-				hideDraw.setVisibility(View.GONE); 
+		else 
+		{
+			ImageButton hideDraw = (ImageButton)findViewById(R.id.toDraw);
+			hideDraw.setVisibility(View.GONE); 
 		}
 	}
 	
 	
-	public void toCanvas(View view) {
+	public void toCanvas(View view) 
+	{
 		// take viewer to appropriate canvas
 		Model model = Model.getInstance();
-		if (model.getLastCard().getType() == Card.Type.TEXT) {
+		if (model.getLastCard().getType() == Card.Type.TEXT) 
+		{
 			Intent intent = new Intent(this, CanvasDrawer.class);
+			// if they return to drawer, bring activity to top rather than add a new one
 			intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			// wait until drawer is done
 			startActivityForResult(intent, CANVAS_REQUEST);
 		}
-		else {
+		else 
+		{
 			Intent intent = new Intent(this, CanvasWriter.class);
+			// if they return to wrtier, bring activity to top rather than add a new one
 			intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+			// wait until writer is done
 			startActivityForResult(intent, CANVAS_REQUEST);
 		}
 	}
@@ -63,8 +73,11 @@ public class CardViewer extends Activity {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data)
 	{
-		if (requestCode == CANVAS_REQUEST) {
-			if (resultCode == RESULT_OK) {
+		if (requestCode == CANVAS_REQUEST) 
+		{
+			if (resultCode == RESULT_OK) 
+			{
+				// when previous activity is done, remove this from stack
 				finish();
 			}
 		}
@@ -74,11 +87,11 @@ public class CardViewer extends Activity {
 	{
 		ImageView previousCard = (ImageView)findViewById(R.id.prevCard);
 		previousCard.setImageBitmap(bap); 
-	
 	}
 	
-	public void savetoDevice(View view) {
-	   
+	// when user clicks on save
+	public void savetoDevice(View view) 
+	{
 		View content = findViewById(R.id.prevCard);
 	    content.setDrawingCacheEnabled(true);
 	    final Bitmap bitmap = content.getDrawingCache();
@@ -86,43 +99,36 @@ public class CardViewer extends Activity {
 		AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
 		
 		saveDialog.setTitle("Save Image?");
-		saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			 public void onClick(DialogInterface dialog, int which) {
-				// create new time-stamped file name
-				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
-			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
-				FileOutputStream ostream;
-				try {
-					file.createNewFile();
-					ostream = new FileOutputStream(file);
-					bitmap.compress(CompressFormat.PNG, 100, ostream);
-					ostream.flush();
-					ostream.close();
-					Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-			 	} 
-				catch (Exception e) {
-					e.printStackTrace();
-					Toast.makeText(getApplicationContext(), "Error", 5000).show();
-				}
+		saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+		{
+			 public void onClick(DialogInterface dialog, int which) 
+			 {
+				 // create new time-stamped file name & save to gallery
+				 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+				 String filename = "IMG_" + timeStamp;
+				 MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
 			 }
 		 });
-		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-			 public void onClick(DialogInterface dialog, int which) {
+		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() 
+		 {
+			 public void onClick(DialogInterface dialog, int which) 
+			 {
 				 dialog.cancel();
 			 }
 		 });
 		saveDialog.show(); 
-
 	}
 	
 	// to instructions page 
-	public void toInstructions(View view) {
+	public void toInstructions(View view) 
+	{
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);
 	}
 
-	public void toMain(View view) {
+	// to exit current game & return to main
+	public void toMain(View view) 
+	{
 		finish();
 	}
 }

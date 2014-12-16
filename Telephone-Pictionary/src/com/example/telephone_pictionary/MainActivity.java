@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 public class MainActivity extends Activity 
 {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -26,30 +25,28 @@ public class MainActivity extends Activity
 	
 	public void gameDirections(View view) 
 	{
-	
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);
 	}
 	
-	
-	//remove these? 
-	
+	// This is what happens when host game button is pushed
 	public void hostGame(View view)
 	{
 		Intent intent = new Intent(this, HostGame.class);
 		startActivity(intent);
 	}
 	
-	// This is what happens when Join Game button is pushed.
+	// This is what happens when Join Game button is pushed
 	public void joinGame(View view)
 	{
 		Intent intent = new Intent(this, JoinGame.class);
 		startActivity(intent);	
 	}	
 	
-	// This is what happens when Pass and Play button is pushed.
+	// This is what happens when Pass and Play button is pushed
 	public void passAndPlay(View view)
 	{
+		// prompt player to enter number of users with scrolling dialog
 		AlertDialog.Builder playerPicker = new AlertDialog.Builder(this);
 		
 		LayoutInflater inflater = this.getLayoutInflater();
@@ -57,6 +54,7 @@ public class MainActivity extends Activity
 		
 		playerPicker.setView(DialogView); 
 		
+		// minimum of 4, maximum of 12 players
 		final NumberPicker numPlayers = (NumberPicker)DialogView.findViewById(R.id.numpick); 
 		numPlayers.setMinValue(4);
 		numPlayers.setMaxValue(12); 
@@ -64,12 +62,14 @@ public class MainActivity extends Activity
         numPlayers.setValue(4);
         numPlayers.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 		
-		playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dInterface, int id) {
+		playerPicker.setPositiveButton("Submit", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dInterface, int id) 
+			{
 				int numOfPlayers = numPlayers.getValue();
-				dInterface.dismiss(); // This might need to be after starting canvas writer
+				dInterface.dismiss(); 
 				
-				// give the model the number of players
+				// clear model & give it number of players
 				Model.clearModel();
 				Model model = Model.getInstance();
 				model.setNumUsers(numOfPlayers);
@@ -86,8 +86,10 @@ public class MainActivity extends Activity
 			}
 		});
 		
-		playerPicker.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dInterface, int id) {
+		playerPicker.setNegativeButton("Cancel", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dInterface, int id) 
+			{
 				dInterface.cancel();
 			}
 		});

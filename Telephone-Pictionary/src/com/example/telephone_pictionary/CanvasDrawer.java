@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -26,19 +27,20 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Bitmap.CompressFormat;
 
-public class CanvasDrawer extends Activity{
-
+public class CanvasDrawer extends Activity
+{
 	private DrawingTools drawTool; 
 	private float xsBrush, sBrush, mBrush, lBrush, xlBrush;
 	private ImageButton currentColor, currentSize; 
 	private boolean colorSetter, brushSetter;
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_canvas_drawer);
 		drawTool = (DrawingTools)findViewById(R.id.drawing);
 		
-		//set up brushes for later user
+		// set up brushes for later user
 		xsBrush = getResources().getInteger(R.integer.xsmall);
 		sBrush = getResources().getInteger(R.integer.small);
 		mBrush = getResources().getInteger(R.integer.med);
@@ -49,36 +51,37 @@ public class CanvasDrawer extends Activity{
 		colorSetter = false; 
 		brushSetter = false; 
 		
-		//keep track of drawing
+		// keep track of drawing
 		drawTool.setDrawingCacheEnabled(true);
-
-
 	}
 	
-	//return to card view
-	public void toCardView(View view) {
+	// return to card view
+	public void toCardView(View view) 
+	{
 		Intent intent = new Intent(this, CardViewer.class);
+		// bring back same card viewer if it is returned to
 		intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 		startActivity(intent);
 	}
 	
-	// to instructions page. 
-	public void toInstructions(View view) {
+	// to instructions page
+	public void toInstructions(View view) 
+	{
 		Intent intent = new Intent(this, Explanation.class);
 	    startActivity(intent);
 	}
 
-	//change colors
-	public void changeColor(View view) {
-
-		//create dialog, disable standard android title
+	// change colors
+	public void changeColor(View view) 
+	{
+		// create dialog, disable standard android title
 		final Dialog colorChooser = new Dialog(this);
 	    colorChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    colorChooser.setContentView(R.layout.color_picker); 
 	
 	   
 	    
-	    //large, gross chunk of code. initializes each button to a color
+	    // large, gross chunk of code. initializes each button to a color
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
 	    ImageButton color2 = (ImageButton)colorChooser.findViewById(R.id.color2);
 	    ImageButton color3 = (ImageButton)colorChooser.findViewById(R.id.color3);
@@ -99,6 +102,7 @@ public class CanvasDrawer extends Activity{
 	    ImageButton color18 = (ImageButton)colorChooser.findViewById(R.id.color18);
 	    ImageButton color19 = (ImageButton)colorChooser.findViewById(R.id.color19);
 	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
+<<<<<<< HEAD
 	  
 	    if(!colorSetter){
 	    	color20.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
@@ -158,9 +162,25 @@ public class CanvasDrawer extends Activity{
 			changeColorView(color); 
 			colorChooser.dismiss(); 
 		}};
+=======
+	
+	    // on click. if color is selected, changes in draw tools and closes dialog
+	    OnClickListener listener = new OnClickListener() 
+		{
+			public void onClick(View v) 
+			{	
+				String color = v.getTag().toString();
+				colorSetter = true; 
+				currentColor = (ImageButton)colorChooser.findViewById(v.getId()); 
+				drawTool.setColor(color);
+				changeView(color); 
+				colorChooser.dismiss(); 
+			}
+		};
+>>>>>>> origin/master
 		colorChooser.show();
 
-		//another super gross chunk of code to set up onclick
+		// another super gross chunk of code to set up onclick
 		color1.setOnClickListener(listener);
 		color2.setOnClickListener(listener);
 		color3.setOnClickListener(listener);
@@ -183,6 +203,7 @@ public class CanvasDrawer extends Activity{
 		color20.setOnClickListener(listener);
 	}
 	
+<<<<<<< HEAD
 	public void changeColorView(String color){
 		//ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
 	//	int paintColor = Color.parseColor(color);
@@ -228,6 +249,20 @@ public class CanvasDrawer extends Activity{
 	    }
 
 	    
+=======
+	public void changeView(String color)
+	{
+		ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
+		int paintColor = Color.parseColor(color);
+		colorChanger.setBackgroundColor(paintColor);
+	}
+	public void changeBrushSize(View view) 
+	{
+		final Dialog brushChooser = new Dialog(this); 
+	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    brushChooser.setContentView(R.layout.brush_picker);
+
+>>>>>>> origin/master
 	    //initiate all buttons
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
 		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
@@ -235,6 +270,7 @@ public class CanvasDrawer extends Activity{
 		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
 		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
 	
+<<<<<<< HEAD
 
 	
 		//on click to change all brush sizes
@@ -244,6 +280,17 @@ public class CanvasDrawer extends Activity{
 				 {
 				 	case R.id.xs_brush:
 				 		drawTool.setBrushSize(xsBrush, "xsBrush");
+=======
+		// on click to change all brush sizes
+		OnClickListener listener = new OnClickListener() 
+		{
+			public void onClick(View v) 
+			{	
+				switch(v.getId())
+				{
+					case R.id.xs_brush:
+				 		drawTool.setBrushSize(xsBrush);
+>>>>>>> origin/master
 						break; 
 				 	case R.id.s_brush:
 				 		drawTool.setBrushSize(sBrush, "sBrush");
@@ -255,23 +302,29 @@ public class CanvasDrawer extends Activity{
 				 		drawTool.setBrushSize(lBrush, "lBrush");
 										 		break; 
 				 	case R.id.xl_brush:
+<<<<<<< HEAD
 				 		drawTool.setBrushSize(xlBrush, "xlBrush");
 				 		break; 
 				 }
 				 	brushSetter = true; 
+=======
+				 		drawTool.setBrushSize(xlBrush);
+						break; 
+				}
+>>>>>>> origin/master
 				 	brushChooser.dismiss();
-				}};
+				}
+			};
 		  
-		//set up listener with buttons
+		// set up listener with buttons
 		xsButton.setOnClickListener(listener);
 		sButton.setOnClickListener(listener);
 		mButton.setOnClickListener(listener);
 		lButton.setOnClickListener(listener);
 		xlButton.setOnClickListener(listener);
 
-		//show dialog
+		// show dialog
 		brushChooser.show();
-		
 	}	
 	
 //	public void changeBrushView(float brushSize){
@@ -296,73 +349,67 @@ public class CanvasDrawer extends Activity{
 	//}
 	
 	// function to save images
-	public void savetoDevice(View view) {
-	
-		//build alert dialog.
-		 AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
-		 LayoutInflater inflater = this.getLayoutInflater();
-		 View DialogView = inflater.inflate(R.layout.save_dialog, null);
-		 saveDialog.setView(DialogView); 
+	public void savetoDevice(View view) 
+	{
+		// build alert dialog.
+		AlertDialog.Builder saveDialog = new AlertDialog.Builder(this);
+		LayoutInflater inflater = this.getLayoutInflater();
+		View DialogView = inflater.inflate(R.layout.save_dialog, null);
+		saveDialog.setView(DialogView); 
 
-		 //user chooses to save
-		 saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			 public void onClick(DialogInterface dialog, int which) {
-				//get drawing cache
+		// user chooses to save
+		saveDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
+				// get drawing cache
 				drawTool.setDrawingCacheEnabled(true);
 				Bitmap bitmap = drawTool.getDrawingCache();
 				 
-				// create new time-stamped file name
-				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+				// create new time-stamped file name & save to gallery
 				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
-			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
-				
-				 //attempt to save image
-			    FileOutputStream ostream;
-			    try {
-			    	file.createNewFile();
-			    	ostream = new FileOutputStream(file);
-			    	bitmap.compress(CompressFormat.PNG, 100, ostream);
-			    	ostream.flush();
-			    	ostream.close();
-			    	Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-			    } catch (Exception e) {
-			    	e.printStackTrace();
-			    	Toast.makeText(getApplicationContext(), "Error", 5000).show();
-			    }
+				String filename = "IMG_" + timeStamp;
+				MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
 
-				 drawTool.destroyDrawingCache();
+				drawTool.destroyDrawingCache();
 			 }
 		 });
 		 
-		 //no option, dialog exits.
-		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-			 public void onClick(DialogInterface dialog, int which) {
+		 // no option, dialog exits
+		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() 
+		 {
+			 public void onClick(DialogInterface dialog, int which) 
+			 {
 				 dialog.cancel();
 			 }
 		 });
-		saveDialog.show(); 
+		 saveDialog.show(); 
 	}
 
 	// clear image
-	public void clearImage(View view) {
-	
-		//build alert dialog
+	public void clearImage(View view) 
+	{
+		// build alert dialog
 		AlertDialog.Builder resetDialog = new AlertDialog.Builder(this);
 		LayoutInflater inflater = this.getLayoutInflater();
 		View DialogView = inflater.inflate(R.layout.clr_dialog, null);
 		resetDialog.setView(DialogView); 
 		 
-		//user opts to clear, drawCanvas is empty
-		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
+		// user opts to clear, drawCanvas is empty
+		resetDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
 				drawTool.startNew(); 
 				dialog.dismiss(); 
 			}
 		}); 
 		
-		//close dialog
-		resetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-			public void onClick(DialogInterface dialog, int which) {
+		// close dialog
+		resetDialog.setNegativeButton("No", new DialogInterface.OnClickListener() 
+		{
+			public void onClick(DialogInterface dialog, int which) 
+			{
 				dialog.cancel();
 			}
 		}); 
@@ -370,16 +417,22 @@ public class CanvasDrawer extends Activity{
 		resetDialog.show(); 
 	}
 	
+<<<<<<< HEAD
 	
 	//sets draw color to white 
 	public void eraseImage(View view) {
+=======
+	// sets draw color to white 
+	public void eraseImage(View view) 
+	{
+>>>>>>> origin/master
 		drawTool.setErase();
 		changeColorView("#FFFFFF");
 	}
 
-	
-	public void submitImage(View view) {
-		
+	// submit message to model
+	public void submitImage(View view) 
+	{
 		drawTool.setDrawingCacheEnabled(true);
    	    Bitmap bitmap = drawTool.getDrawingCache();
 
@@ -387,7 +440,8 @@ public class CanvasDrawer extends Activity{
 
    	    Card cardStorage = new Card(bitmap,Card.Type.IMAGE); 
 
-   	    if (model.saveCard(cardStorage)) {
+   	    if (model.saveCard(cardStorage)) 
+   	    {
    	    	// end of game
 	    	Intent intent = new Intent();
 	    	intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.EndGame");
@@ -398,10 +452,12 @@ public class CanvasDrawer extends Activity{
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
 			
+			// alert card viewer to close
 			this.setResult(RESULT_OK);
 			finish();
    	    }
-   	    else {
+   	    else 
+   	    {
    	    	// pass to next player
    	    	Intent intent = new Intent();
 			intent.setClassName("com.example.telephone_pictionary", "com.example.telephone_pictionary.CardViewer"); 
@@ -411,13 +467,16 @@ public class CanvasDrawer extends Activity{
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
+			// alert card viewer to close
 			this.setResult(RESULT_OK);
 			finish();
    	    }
-   	    
 	}
 	
-	public void toMain(View view) {
+	// exit current game and return to main
+	public void toMain(View view) 
+	{
+		this.setResult(RESULT_OK);
 		finish();
 	}
 	

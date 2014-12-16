@@ -10,6 +10,7 @@ public class Model
 	private static Model m_instance = null;
 	private int turn;
 	
+	// disallow use of this
 	protected Model () 
 	{
 		turn = 1;
@@ -17,14 +18,17 @@ public class Model
 		m_cards = new ArrayList<Card>();
 	}
 	
+	// singleton model
 	public synchronized static Model getInstance() 
 	{
-		if (m_instance == null) {
+		if (m_instance == null) 
+		{
 			m_instance = new Model();
 		}
 		return m_instance;
 	}
 	
+	// clear current model
 	public static void clearModel() 
 	{
 		m_instance = null;
@@ -47,7 +51,8 @@ public class Model
 	{
 		m_cards.add(card);
 		turn++;
-		if (m_cards.size() == m_numUsers) {
+		if (m_cards.size() == m_numUsers) 
+		{
 			// game needs to end
 			return true;
 		}
@@ -57,7 +62,8 @@ public class Model
 	
 	public Card getLastCard()
 	{
-		if (m_cards.isEmpty()) {
+		if (m_cards.isEmpty()) 
+		{
 			return null;
 		}
 		return m_cards.get(m_cards.size() - 1);
