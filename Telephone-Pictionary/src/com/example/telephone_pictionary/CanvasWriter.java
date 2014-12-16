@@ -98,12 +98,12 @@ public class CanvasWriter extends Activity
 			this.setResult(RESULT_OK);
 			finish();
 		}
-
 	}
 	
 	// exit current game and return to main
 	public void toMain(View view) 
 	{
+		this.setResult(RESULT_OK);
 		finish();
 	}
 }

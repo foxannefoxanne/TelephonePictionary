@@ -332,16 +332,16 @@ public class CanvasDrawer extends Activity
 			CharSequence loadingMessage = "Pass to next player";
 			int duration = Toast.LENGTH_SHORT;
 			Toast.makeText(context, loadingMessage, duration).show();
-			// alert card viewre to close
+			// alert card viewer to close
 			this.setResult(RESULT_OK);
 			finish();
    	    }
-   	    
 	}
 	
 	// exit current game and return to main
 	public void toMain(View view) 
 	{
+		this.setResult(RESULT_OK);
 		finish();
 	}
 	
