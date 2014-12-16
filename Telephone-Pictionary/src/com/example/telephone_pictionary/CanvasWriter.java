@@ -101,4 +101,8 @@ public class CanvasWriter extends Activity {
 		}
 
 	}
+	
+	public void toMain(View view) {
+		finish();
+	}
 }

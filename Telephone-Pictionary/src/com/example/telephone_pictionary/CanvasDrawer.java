@@ -294,4 +294,8 @@ public class CanvasDrawer extends Activity{
    	    
 	}
 	
+	public void toMain(View view) {
+		finish();
+	}
+	
 }

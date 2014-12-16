@@ -120,5 +120,7 @@ public class CardViewer extends Activity {
 	    startActivity(intent);
 	}
 
-	
+	public void toMain(View view) {
+		finish();
+	}
 }

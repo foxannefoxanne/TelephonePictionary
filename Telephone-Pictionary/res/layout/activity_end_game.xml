@@ -20,14 +20,32 @@
         android:src="@drawable/result"
         android:layout_margin="3dp" />
      	
-   <ImageButton
-  	    android:id="@+id/explanationbutton"
+  
+ 	<LinearLayout
         android:layout_width="wrap_content"
-   	    android:layout_height="wrap_content"
-   	    android:layout_marginTop="2dp"
-   	    android:background="@drawable/questionmark"
-   	    android:layout_alignParentRight="true" 
-   	    android:onClick="toInstructions" />
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp" 
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+        
+   		<ImageButton
+    	    android:id="@+id/explanationbutton"
+    	    android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginTop="4dp"
+    	    android:background="@drawable/questionmark"
+    	    android:onClick="toInstructions" />
+   		
+   		<ImageButton
+   		    android:id="@+id/exit"
+   		    android:layout_width="34dp"
+   		    android:layout_height="34dp"
+   		    android:layout_marginTop="4dp"
+   		    android:background="@drawable/xsymbol"
+   		    android:onClick="toMain"/>
+   		
+       	 	</LinearLayout>
 	
 	</RelativeLayout>
 	
@@ -48,7 +66,7 @@
             android:background = "@null"
             android:src="@drawable/save" />
   
-        <ImageButton
+        <!--  ImageButton
             android:id="@+id/playagain"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
@@ -56,7 +74,7 @@
             android:onClick="toMain"
             android:layout_alignParentRight="true"		
             android:background = "@null"
-            android:src="@drawable/playagain" />
+            android:src="@drawable/playagain" / -->
   
         
         </RelativeLayout>
