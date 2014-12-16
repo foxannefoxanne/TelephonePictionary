@@ -111,21 +111,16 @@
         android:layout_gravity="center"
         android:layout_marginTop="5dp" 
         android:orientation="horizontal">
-        
-        
- 
-        <ImageButton
-            android:id="@+id/brush_button"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:contentDescription="@string/brush_size"
-            android:src="@drawable/brush"
-            android:onClick="changeBrushSize"
-            android:background="@null"
-            android:layout_margin="10dp"/>
-          
 
-            
+     
+         <ImageButton
+    		android:id="@+id/display_color"
+    		android:layout_width="@dimen/l_brush"
+   			android:layout_height="@dimen/l_brush"
+   			android:background="#000000"
+   			android:layout_gravity="center"
+   			android:contentDescription="@string/color"
+   			android:src="@drawable/color_display"/>
   
         <ImageButton
            	android:id="@+id/color_button"
@@ -136,6 +131,19 @@
            	android:onClick="changeColor"
            	android:background="@null"
            	 android:layout_margin="10dp"/>
+        
+        
+        	
+        	 <ImageButton
+            android:id="@+id/erase_button"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/erase"
+            android:onClick="eraseImage"
+            android:src="@drawable/erase"
+            android:background="@null"
+            android:layout_margin="10dp"/>
+        	     
    
         </LinearLayout>
         
@@ -145,15 +153,24 @@
         android:layout_gravity="center" 
         android:layout_marginBottom="10dp" 
         android:orientation="horizontal">
-        
-              
-                <ImageButton
-            android:id="@+id/erase_button"
+
+      <ImageButton
+          android:layout_width="@dimen/m_brush"
+          android:layout_height="@dimen/m_brush"
+          
+          android:background="#3E818A"
+          android:layout_gravity="center"
+          android:contentDescription="@string/med"
+          android:padding="2dp"
+          android:src="@drawable/brush_display" />
+           
+        <ImageButton
+            android:id="@+id/brush_button"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:contentDescription="@string/erase"
-            android:onClick="eraseImage"
-            android:src="@drawable/erase"
+            android:contentDescription="@string/brush_size"
+            android:src="@drawable/brush"
+            android:onClick="changeBrushSize"
             android:background="@null"
             android:layout_margin="10dp"/>
                 

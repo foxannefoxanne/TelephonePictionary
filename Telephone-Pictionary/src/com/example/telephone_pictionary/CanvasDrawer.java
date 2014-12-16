@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -21,13 +22,15 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Bitmap.CompressFormat;
 
 public class CanvasDrawer extends Activity
 {
 	private DrawingTools drawTool; 
 	private float xsBrush, sBrush, mBrush, lBrush, xlBrush;
-	
+	private ImageButton currentColor, currentSize; 
+	private boolean colorSetter, brushSetter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -41,6 +44,10 @@ public class CanvasDrawer extends Activity
 		mBrush = getResources().getInteger(R.integer.med);
 		lBrush = getResources().getInteger(R.integer.large);
 		xlBrush = getResources().getInteger(R.integer.xlarge); 
+	
+	
+		colorSetter = false; 
+		brushSetter = true; 
 		
 		// keep track of drawing
 		drawTool.setDrawingCacheEnabled(true);
@@ -69,7 +76,14 @@ public class CanvasDrawer extends Activity
 		final Dialog colorChooser = new Dialog(this);
 	    colorChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    colorChooser.setContentView(R.layout.color_picker); 
-
+	
+	    if(!colorSetter){
+	    	currentColor = (ImageButton)colorChooser.findViewById(R.id.color20); 
+	    	currentColor.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    }
+	    else{
+	    	currentColor.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
+	    }
 	    
 	    // large, gross chunk of code. initializes each button to a color
 	    ImageButton color1 = (ImageButton)colorChooser.findViewById(R.id.color1);
@@ -93,17 +107,19 @@ public class CanvasDrawer extends Activity
 	    ImageButton color19 = (ImageButton)colorChooser.findViewById(R.id.color19);
 	    ImageButton color20 = (ImageButton)colorChooser.findViewById(R.id.color20);
 	
-
-	    // on click if color is selected, changes in draw tools and closes dialog
+	    // on click. if color is selected, changes in draw tools and closes dialog
 	    OnClickListener listener = new OnClickListener() 
-	    {
-	    	public void onClick(View v) 
-	    	{	
-	    		String color = v.getTag().toString();
-	    		drawTool.setColor(color);
-	    		colorChooser.dismiss(); 
-	    	}
-	    };
+		{
+			public void onClick(View v) 
+			{	
+				String color = v.getTag().toString();
+				colorSetter = true; 
+				currentColor = (ImageButton)colorChooser.findViewById(v.getId()); 
+				drawTool.setColor(color);
+				changeView(color); 
+				colorChooser.dismiss(); 
+			}
+		};
 		colorChooser.show();
 
 		// another super gross chunk of code to set up onclick
@@ -129,13 +145,19 @@ public class CanvasDrawer extends Activity
 		color20.setOnClickListener(listener);
 	}
 	
+	public void changeView(String color)
+	{
+		ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
+		int paintColor = Color.parseColor(color);
+		colorChanger.setBackgroundColor(paintColor);
+	}
 	public void changeBrushSize(View view) 
 	{
 		final Dialog brushChooser = new Dialog(this); 
 	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    brushChooser.setContentView(R.layout.brush_picker);
-		
-	    // initiate all buttons
+
+	    //initiate all buttons
 		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
 		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
 		ImageButton mButton = (ImageButton)brushChooser.findViewById(R.id.m_brush);
@@ -270,6 +292,7 @@ public class CanvasDrawer extends Activity
 	public void eraseImage(View view) 
 	{
 		drawTool.setErase();
+		changeView("#FFFFFF");
 	}
 
 	// submit message to model
