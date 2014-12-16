@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,13 +19,12 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 
 public class CanvasDrawer extends Activity
 {
 	private DrawingTools drawTool; 
 	private float xsBrush, sBrush, mBrush, lBrush, xlBrush;
-	private ImageButton currentColor, currentSize; 
+	private ImageButton currentSize; 
 	private boolean colorSetter, brushSetter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -74,7 +71,6 @@ public class CanvasDrawer extends Activity
 		final Dialog colorChooser = new Dialog(this);
 	    colorChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    colorChooser.setContentView(R.layout.color_picker); 
-	
 	   
 	    
 	    // large, gross chunk of code. initializes each button to a color
@@ -103,7 +99,7 @@ public class CanvasDrawer extends Activity
 	    	color20.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
 	    }
 	    else{
-	    	if(color1.getId() == drawTool.getColorButton().getId())
+		if(color1.getId() == drawTool.getColorButton().getId())
 	    		color1.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
 	    	else if(color2.getId() == drawTool.getColorButton().getId())
 	    		color2.setImageDrawable(getResources().getDrawable(R.drawable.paint_selected));
@@ -154,9 +150,7 @@ public class CanvasDrawer extends Activity
 	    	{	
 				String color = v.getTag().toString();
 				colorSetter = true; 
-				currentColor = (ImageButton)colorChooser.findViewById(v.getId()); 
 				drawTool.setColor(color, (ImageButton)colorChooser.findViewById(v.getId()));
-				changeColorView(color); 
 				colorChooser.dismiss(); 
 	    	}
 	    };
@@ -186,12 +180,6 @@ public class CanvasDrawer extends Activity
 		color20.setOnClickListener(listener);
 	}
 	
-	public void changeColorView(String color)
-	{
-		//ImageButton colorChanger = (ImageButton)findViewById(R.id.display_color); 
-	//	int paintColor = Color.parseColor(color);
-		//colorChanger.setBackgroundColor(paintColor);
-	}
 	
 	public void changeBrushSize(View view) {
 
@@ -199,44 +187,35 @@ public class CanvasDrawer extends Activity
 	    brushChooser.requestWindowFeature(Window.FEATURE_NO_TITLE);
 	    brushChooser.setContentView(R.layout.brush_picker);
 		
+	    //initiate all buttons
+	  		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
+	  		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
+	  		ImageButton mButton = (ImageButton)brushChooser.findViewById(R.id.m_brush);
+	  		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
+	  		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
+	  		
 
 	    if(!brushSetter){
-	    	currentSize = (ImageButton)brushChooser.findViewById(R.id.m_brush); 
-	    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
+	       	mButton.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
 	    }
 	    else{
 			if(drawTool.getBrushSize().equals("xsBrush")){
-			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.xs_brush); 
-			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.xsbrush_selected));}
+			    	xsButton.setImageDrawable(getResources().getDrawable(R.drawable.xsbrush_selected));}
 		    else if(drawTool.getBrushSize().equals("sBrush")){
-		    		currentSize = (ImageButton)brushChooser.findViewById(R.id.s_brush); 
-			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.sbrush_selected));}
-			 		//changeBrushView(sBrush); 
-					 
+		    		sButton.setImageDrawable(getResources().getDrawable(R.drawable.sbrush_selected));}
 		     else if(drawTool.getBrushSize().equals("mBrush")){
-			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.m_brush); 
-			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
-			 		//changeBrushView(mBrush); 
+		    	 	mButton.setImageDrawable(getResources().getDrawable(R.drawable.mbrush_selected));
 		     }
 			 else if(drawTool.getBrushSize().equals("lBrush")){
-			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.l_brush); 
-			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.lbrush_selected));
-			 		//changeBrushView(lBrush); 
+			    	lButton.setImageDrawable(getResources().getDrawable(R.drawable.lbrush_selected));
 			    }
 			 else if(drawTool.getBrushSize().equals("xlBrush")){
-			    	currentSize = (ImageButton)brushChooser.findViewById(R.id.xl_brush); 
-			    	currentSize.setImageDrawable(getResources().getDrawable(R.drawable.xlbrush_selected));
-			 		//changeBrushView(xlBrush); 
+				 	xlButton.setImageDrawable(getResources().getDrawable(R.drawable.xlbrush_selected));
 			 }
 
 	    }
 
-	    //initiate all buttons
-		ImageButton xsButton = (ImageButton)brushChooser.findViewById(R.id.xs_brush);
-		ImageButton sButton = (ImageButton)brushChooser.findViewById(R.id.s_brush);
-		ImageButton mButton = (ImageButton)brushChooser.findViewById(R.id.m_brush);
-		ImageButton lButton = (ImageButton)brushChooser.findViewById(R.id.l_brush);
-		ImageButton xlButton = (ImageButton)brushChooser.findViewById(R.id.xl_brush);
+	  
 	
 		//on click to change all brush sizes
 		 OnClickListener listener = new OnClickListener() {
@@ -276,27 +255,7 @@ public class CanvasDrawer extends Activity
 		brushChooser.show();
 	}	
 	
-//	public void changeBrushView(float brushSize){
-	//	ImageButton brushChanger = (ImageButton)findViewById(R.id.brush_view);
-		
-	//	if(xsBrush == brushSize){
-			//brushChanger.setImageResource(R.drawable.xsbrush_selected);
-		//}
-		//if(sBrush == brushSize){
-		//	brushChanger.setImageResource(R.drawable.sbrush_selected);
-		//}
-		//if(mBrush == brushSize){
-			//brushChanger.setImageResource(R.drawable.mbrush_selected);
-		//}
-		//if(lBrush == brushSize){
-		//	brushChanger.setImageResource(R.drawable.lbrush_selected);
-		//}
-	//	if(xlBrush == brushSize){
-		//	brushChanger.setImageResource(R.drawable.xlbrush_selected);
-		//}
 
-	//}
-	
 	// function to save images
 	public void savetoDevice(View view) 
 	{
@@ -370,7 +329,6 @@ public class CanvasDrawer extends Activity
 	public void eraseImage(View view) 
 	{
 		drawTool.setErase();
-		changeColorView("#FFFFFF");
 	}
 
 	// submit message to model
