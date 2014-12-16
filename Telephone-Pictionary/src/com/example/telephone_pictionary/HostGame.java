@@ -31,11 +31,15 @@ public class HostGame extends Activity
 		registerService(m_localPort);
 	}
 	
-	public void initializeServerSocket() {
+	public void initializeServerSocket() 
+	{
 	    // Initialize a server socket on the next available port
-	    try {
+	    try 
+	    {
 			m_serverSocket = new ServerSocket(0);
-		} catch (IOException e) {
+		} 
+	    catch (IOException e) 
+		{
 			// TODO: figure out what to do with this
 			e.printStackTrace();
 		}
@@ -44,11 +48,14 @@ public class HostGame extends Activity
 	    m_localPort =  m_serverSocket.getLocalPort();
 	}
 	
-	public void initializeRegistrationListener() {
-		m_registrationListener = new NsdManager.RegistrationListener() {
+	public void initializeRegistrationListener() 
+	{
+		m_registrationListener = new NsdManager.RegistrationListener() 
+		{
 
 	        @Override
-	        public void onServiceRegistered(NsdServiceInfo NsdServiceInfo) {
+	        public void onServiceRegistered(NsdServiceInfo NsdServiceInfo) 
+	        {
 	            // Save the service name.  Android may have changed it in order to
 	            // resolve a conflict, so update the name you initially requested
 	            // with the name Android actually used.
@@ -56,24 +63,28 @@ public class HostGame extends Activity
 	        }
 
 	        @Override
-	        public void onRegistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
+	        public void onRegistrationFailed(NsdServiceInfo serviceInfo, int errorCode) 
+	        {
 	            // Registration failed!  Put debugging code here to determine why.
 	        }
 
 	        @Override
-	        public void onServiceUnregistered(NsdServiceInfo arg0) {
+	        public void onServiceUnregistered(NsdServiceInfo arg0) 
+	        {
 	            // Service has been unregistered.  This only happens when you call
 	            // NsdManager.unregisterService() and pass in this listener.
 	        }
 
 	        @Override
-	        public void onUnregistrationFailed(NsdServiceInfo serviceInfo, int errorCode) {
+	        public void onUnregistrationFailed(NsdServiceInfo serviceInfo, int errorCode) 
+	        {
 	            // Unregistration failed.  Put debugging code here to determine why.
 	        }
 	    };
 	}
 	
-	public void registerService(int port) {
+	public void registerService(int port) 
+	{
 	    NsdServiceInfo serviceInfo  = new NsdServiceInfo();
 	    serviceInfo.setServiceName("Telephonary");
 	    serviceInfo.setServiceType("_http._tcp.");
