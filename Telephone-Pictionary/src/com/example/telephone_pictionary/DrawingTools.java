@@ -10,6 +10,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.view.MotionEvent;
+import android.widget.ImageButton;
 import android.util.TypedValue;
 import android.graphics.Color;
 
@@ -21,8 +22,10 @@ public class DrawingTools extends View
 	private Canvas drawingCanvas;
 	private Bitmap drawingBitmap; 
 	private float brushSize;
+	private String brushName; 
+	private ImageButton currentColor; 
 	
-	public DrawingTools(Context context, AttributeSet attrs) 
+	public DrawingTools(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
 		setUpDrawingTools();
@@ -103,27 +106,46 @@ public class DrawingTools extends View
 		drawingCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
 		invalidate();
 	}
+
+	//clears old paint color, starts with new
+	public void setColor(String color, ImageButton buttonName) 
+	{
+		changeColor(color); 
+		currentColor = buttonName; 
+	}
 	
-	// clears old paint color, starts with new
-	public void setColor(String color) 
+	public void changeColor(String color)
 	{
 		invalidate(); 
 		paintColor = Color.parseColor(color);
 		drawPaint.setColor(paintColor);  
 	}
-	
-	// reset brush size
-	public void setBrushSize(float newSize) 
+
+	//reset brush size
+	public void setBrushSize(float newSize, String sizeName) 
 	{
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
 		brushSize = pixelAmount; 
 		drawPaint.setStrokeWidth(brushSize); 
+		brushName = sizeName; 
+		
 	}
 	
-	// set erase (brush color to white)
+	public String getBrushSize()
+	{
+		return brushName; 
+	}
+	//set erase (brush color to white)
 	public void setErase() 
 	{
-		this.setColor("#FFFFFFFF");
+
+		this.changeColor("#FFFFFFFF");
+	}
+	
+	public ImageButton getColorButton()
+	{
+		return currentColor; 
+
 	}
 	
 }
