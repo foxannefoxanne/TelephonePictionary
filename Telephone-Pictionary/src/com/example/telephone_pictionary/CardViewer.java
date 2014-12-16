@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -102,25 +103,10 @@ public class CardViewer extends Activity
 		{
 			 public void onClick(DialogInterface dialog, int which) 
 			 {
-				// create new time-stamped file name
-				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
-				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
-			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
-				FileOutputStream ostream;
-				try 
-				{
-					file.createNewFile();
-					ostream = new FileOutputStream(file);
-					bitmap.compress(CompressFormat.PNG, 100, ostream);
-					ostream.flush();
-					ostream.close();
-					Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-			 	} 
-				catch (Exception e) 
-				{
-					e.printStackTrace();
-					Toast.makeText(getApplicationContext(), "Error", 5000).show();
-				}
+				 // create new time-stamped file name & save to gallery
+				 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
+				 String filename = "IMG_" + timeStamp;
+				 MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
 			 }
 		 });
 		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() 

@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -79,34 +80,11 @@ public class EndGame extends FragmentActivity
 				// iterate through all pics in model to save all
 				for (int i = 0; i < model.getNumUsers(); ++i) 
 				{
-					boolean error = false;
 					Bitmap bitmap = model.getCard(i).getImage();
-					// create new time-stamped file name
-					String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+					// create new time-stamped file name & save to gallery
 					String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
-				    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
-					FileOutputStream ostream;
-					try 
-					{
-						file.createNewFile();
-						ostream = new FileOutputStream(file);
-						bitmap.compress(CompressFormat.PNG, 100, ostream);
-						ostream.flush();
-						ostream.close();
-					} 
-					catch (Exception e) 
-					{
-						e.printStackTrace();
-						error = true;
-					}
-					if (error) 
-					{
-						Toast.makeText(getApplicationContext(), "Error", 5000).show();
-					}
-					else 
-					{
-						Toast.makeText(getApplicationContext(), "Images saved", 5000).show();
-					}
+					String filename = "IMG_" + timeStamp;
+					MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
 				}
 			}
 		});

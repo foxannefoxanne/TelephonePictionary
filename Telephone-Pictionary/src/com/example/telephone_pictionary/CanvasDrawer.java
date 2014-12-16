@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -220,29 +221,12 @@ public class CanvasDrawer extends Activity
 				drawTool.setDrawingCacheEnabled(true);
 				Bitmap bitmap = drawTool.getDrawingCache();
 				 
-				// create new time-stamped file name
-				String path = Environment.getExternalStorageDirectory().getAbsolutePath();
+				// create new time-stamped file name & save to gallery
 				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
-			    File file = new File(path + File.separator + "IMG_"+ timeStamp + ".png");
-				
-			    // attempt to save image
-			    FileOutputStream ostream;
-			    try 
-			    {
-			    	file.createNewFile();
-			    	ostream = new FileOutputStream(file);
-			    	bitmap.compress(CompressFormat.PNG, 100, ostream);
-			    	ostream.flush();
-			    	ostream.close();
-			    	Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
-			    } 
-			    catch (Exception e) 
-			    {
-			    	e.printStackTrace();
-			    	Toast.makeText(getApplicationContext(), "Error", 5000).show();
-			    }
+				String filename = "IMG_" + timeStamp;
+				MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
 
-				 drawTool.destroyDrawingCache();
+				drawTool.destroyDrawingCache();
 			 }
 		 });
 		 
