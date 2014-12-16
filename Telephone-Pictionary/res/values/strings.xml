@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Telephonery</string>
+    <string name="app_name">Telephonary</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="normal_instr">Telephonary is based off a combination of two popular games: Telephone and Pictionary. \nIn Telephonary the first player types a phrase and passes to the next player, who will look at the phrase and attempt to draw it. That player will then pass to the next player, who, only looking at the drawing, will attempt to guess the original phrase. \nThis will continue, alternating between drawing a picture from the phrase and writing a phrase from the picture.\nEnjoy the confusion!</string>
