@@ -1,26 +1,18 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:orientation="vertical"
     android:background="#3E818A" >
 	
-    <LinearLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:paddingLeft="16dp"
-	    android:paddingRight="16dp"
-	    android:paddingTop = "16dp"
-	    android:paddingBottom = "16dp"
-	    android:layout_marginRight = "10dp"
-	    android:layout_marginTop = "10dp"
-	    android:layout_marginLeft = "10dp"  
-	    android:layout_marginBottom = "10dp"
-	    android:orientation="vertical"
-	    android:background="#98BAC3" >
- 
+   <RelativeLayout
+       android:layout_width="fill_parent"
+       android:layout_height="869dp"
+       android:layout_marginBottom="10dp"
+       android:paddingRight="5dp" >
+   		
     <ImageButton
  		android:id="@+id/exit"
 	    android:layout_width="34dp"
@@ -28,7 +20,22 @@
  	    android:layout_marginTop="4dp"
  	    android:background="@drawable/xsymbol"
  	    android:gravity="end"
+ 	   	android:layout_alignParentRight="true"		
  	    android:onClick="close"/>
+	  
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/exit"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="#98BAC3"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="16dp" >
         
     <TextView
         android:id="@+id/TelephonePic"
@@ -38,7 +45,9 @@
         android:layout_marginLeft = "7dp"
         android:gravity="center"
         android:text="@string/about_game"
-        android:textSize="42sp" />
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/Description"
@@ -46,9 +55,11 @@
         android:layout_height="match_parent"	     
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
-        android:gravity="center"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
         android:text="@string/normal_instr"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize = "18sp"
+        android:textColor = "#000000" />
 
     <TextView
         android:id="@+id/HowToUse"
@@ -56,9 +67,12 @@
         android:layout_height="match_parent"
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
+        android:layout_marginTop = "20dp"
         android:gravity="center"
-        android:text="@string/pass_play"
-        android:textSize="42sp" />
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:text="@string/pass_play"/>
 
     <TextView
         android:id="@+id/Instructions"
@@ -66,10 +80,13 @@
         android:layout_height="match_parent"
         android:layout_marginRight = "7dp"
         android:layout_marginLeft = "7dp"
-        android:gravity="center"
+        android:gravity="left"
+        android:layout_marginTop="10dp"
+         android:textSize = "18sp"
+        android:textColor = "#000000" 
         android:text="@string/pass_play_instr"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-  </LinearLayout>
-	        
+  			</LinearLayout>
+	    </RelativeLayout>    
 </ScrollView>
