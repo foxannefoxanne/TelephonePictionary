@@ -13,7 +13,8 @@ import android.os.Build;
 import android.os.Bundle;
 
 @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-public class HostGame extends Activity {
+public class HostGame extends Activity 
+{
 
 	private ServerSocket m_serverSocket;
 	private int m_localPort;
@@ -22,7 +23,8 @@ public class HostGame extends Activity {
 	private RegistrationListener m_registrationListener;
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) 
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_host_game);
 		

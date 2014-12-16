@@ -13,9 +13,8 @@ import android.view.MotionEvent;
 import android.util.TypedValue;
 import android.graphics.Color;
 
-public class DrawingTools extends View {
-	
-	
+public class DrawingTools extends View 
+{
 	private Path drawPath;
 	private Paint drawPaint, canvasPaint;
 	private int paintColor;
@@ -23,12 +22,14 @@ public class DrawingTools extends View {
 	private Bitmap drawingBitmap; 
 	private float brushSize;
 	
-	public DrawingTools(Context context, AttributeSet attrs){
+	public DrawingTools(Context context, AttributeSet attrs) 
+	{
 		super(context, attrs);
 		setUpDrawingTools();
 	}
 	
-	private void setUpDrawingTools(){
+	private void setUpDrawingTools() 
+	{
 		//set up path, paint
 		drawPath = new Path();
 		drawPaint = new Paint();
@@ -55,26 +56,29 @@ public class DrawingTools extends View {
 	}
 	
 	@Override
-	protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) {
+	protected void onSizeChanged(int width, int height, int oldWidth, int oldHeight) 
+	{
 		super.onSizeChanged(width, height, oldWidth, oldHeight);
 		drawingBitmap = Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
 		drawingCanvas = new Canvas(drawingBitmap);
 	}
 	
 	@Override
-	protected void onDraw(Canvas canvas) {
+	protected void onDraw(Canvas canvas) 
+	{
 		canvas.drawBitmap(drawingBitmap, 0, 0, canvasPaint);
 		canvas.drawPath(drawPath, drawPaint);
 	}
 	
-	//detects touch of user on screen
+	// detects touch of user on screen
 	@Override
-	public boolean onTouchEvent(MotionEvent event)
+	public boolean onTouchEvent(MotionEvent event) 
 	{
 		float xCoord = event.getX();
 		float yCoord = event.getY();
 		
-		switch(event.getAction()){
+		switch(event.getAction())
+		{
 			case MotionEvent.ACTION_DOWN:
 				drawPath.moveTo(xCoord, yCoord);
 				break;
@@ -93,29 +97,32 @@ public class DrawingTools extends View {
 		return true; 
 	}
 	
-	//erases all that is on canvas, starts new
-	public void startNew() {
+	// erases all that is on canvas, starts new
+	public void startNew() 
+	{
 		drawingCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
 		invalidate();
 	}
 	
-	//clears old paint color, starts with new
-	public void setColor(String color) {
+	// clears old paint color, starts with new
+	public void setColor(String color) 
+	{
 		invalidate(); 
 		paintColor = Color.parseColor(color);
 		drawPaint.setColor(paintColor);  
 	}
 	
-	//reset brush size
-	public void setBrushSize(float newSize) {
+	// reset brush size
+	public void setBrushSize(float newSize) 
+	{
 		float pixelAmount = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, newSize, getResources().getDisplayMetrics());
 		brushSize = pixelAmount; 
 		drawPaint.setStrokeWidth(brushSize); 
 	}
 	
-	//set erase (brush color to white)
-	public void setErase() {
-
+	// set erase (brush color to white)
+	public void setErase() 
+	{
 		this.setColor("#FFFFFFFF");
 	}
 	
