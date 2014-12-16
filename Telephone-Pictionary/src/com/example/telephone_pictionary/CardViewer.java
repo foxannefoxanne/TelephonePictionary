@@ -1,7 +1,5 @@
 package com.example.telephone_pictionary;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,14 +8,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 public class CardViewer extends Activity 
 {
@@ -63,7 +58,7 @@ public class CardViewer extends Activity
 		else 
 		{
 			Intent intent = new Intent(this, CanvasWriter.class);
-			// if they return to wrtier, bring activity to top rather than add a new one
+			// if they return to writer, bring activity to top rather than add a new one
 			intent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 			// wait until writer is done
 			startActivityForResult(intent, CANVAS_REQUEST);

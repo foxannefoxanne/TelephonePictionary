@@ -3,16 +3,12 @@ package com.example.telephone_pictionary;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -24,7 +20,6 @@ import android.widget.Toast;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Bitmap.CompressFormat;
 
 public class CanvasDrawer extends Activity
 {
