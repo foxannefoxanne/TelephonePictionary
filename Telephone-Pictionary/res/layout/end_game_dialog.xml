@@ -6,13 +6,13 @@
     android:background="#FFFFFF" >
     
     
-    <ImageView
+    <!--  <ImageView
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="#FFEC8B"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/endgameheader" />
+        android:src="@drawable/endgameheader" />-->
 
     
     </LinearLayout>
