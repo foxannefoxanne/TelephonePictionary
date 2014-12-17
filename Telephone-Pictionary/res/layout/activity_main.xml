@@ -17,37 +17,15 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="68dp"
         android:scaleType="centerInside"
-        android:src="@drawable/telephonary" />
-    
-    <ImageButton 
-        android:id="@+id/hostGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/hostgame"
-        android:onClick="hostGame"/> 
-        
-    
-    <ImageButton
-        android:id="@+id/joinGame"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/hostGame"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/joingame"
-        android:onClick="joinGame"/>
-        
+        android:src="@drawable/telephonary" />   
 	
 	<ImageButton
         android:id="@+id/passAndPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/joinGame"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         android:background="@drawable/passandplay"
         android:onClick="passAndPlay"/> 
 

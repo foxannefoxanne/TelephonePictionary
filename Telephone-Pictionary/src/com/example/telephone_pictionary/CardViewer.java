@@ -13,6 +13,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class CardViewer extends Activity 
 {
@@ -102,6 +103,7 @@ public class CardViewer extends Activity
 				 String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
 				 String filename = "IMG_" + timeStamp;
 				 MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
+				 Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
 			 }
 		 });
 		 saveDialog.setNegativeButton("No", new DialogInterface.OnClickListener() 

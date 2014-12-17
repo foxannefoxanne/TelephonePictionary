@@ -279,6 +279,7 @@ public class CanvasDrawer extends Activity
 				String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmssSS").format(new Date());
 				String filename = "IMG_" + timeStamp;
 				MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, filename, null);
+				Toast.makeText(getApplicationContext(), "Image saved", 5000).show();
 
 				drawTool.destroyDrawingCache();
 			 }
